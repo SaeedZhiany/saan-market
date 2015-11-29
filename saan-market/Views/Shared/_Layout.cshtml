@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <title>@ViewBag.Title -به سان مارکت خوش آمدید </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch/144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch/114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch/72.png">
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch/57.png">
+    <link rel="shortcut icon" href="images/apple-touch/57.png">
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="span7">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="images/logo.png" alt="Webmarket Logo" width="48" height="48" />
+                 @Html.ActionLink("SAAN Market", "Index", "Saan", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("خانه", "Index", "Saan")</li>
+                    <li>@Html.ActionLink("درباره", "About", "Home")</li>
+                    <li>@Html.ActionLink("ارتباط با ما", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+
+            <!--  ==========  -->
+            <!--  = Upper footer =  -->
+            <!--  ==========  -->
+            <div class="foot-dark">
+                <div class="container">
+                    <div class="row">
+
+                        <!--  ==========  -->
+                        <!--  = Menu 1 =  -->
+                        <!--  ==========  -->
+                        <div class="span3">
+                            <div class="main-titles lined">
+                                <h3 class="title"><span class="light">ناوبری</span> اصلی</h3>
+                            </div>
+                            <ul class="nav bold">
+                                <li><a href="#">خانه</a></li>
+                                <li><a href="#">درباره ما</a></li>
+                                <li><a href="#">تماس با ما</a></li>
+                            </ul>
+                        </div>
+
+                        <!--  ==========  -->
+                        <!--  = Menu 2 =  -->
+                        <!--  ==========  -->
+                        <div class="span3">
+                            <div class="main-titles lined">
+                                <h3 class="title"><span class="light">دومین</span> ناوبری</h3>
+                            </div>
+                            <ul class="nav">
+                                <li><a href="#">آدرس پروژه در گیت هاب</a></li>
+                                <li><a href="#">آدرس سایت مدیریت پروژه</a></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="span6">
+                                    <h2 class="pacifico">SAAN Market &nbsp; <img src="images/webmarket.png" alt="Webmarket Cart" class="align-baseline" /></h2>
+                                    <p>این یک نوشته آزمایشی است. شما میتوانید این قسمت را با نوشته های دلخواه خود که مناسب این ناحیه باشند پر نمایید. ما این بخش را با نوشته هایی بی معنی پر کرده ایم.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> <!-- /upper footer -->
+            <!--  ==========  -->
+            <!--  = Bottom Footer =  -->
+            <!--  ==========  -->
+            <div class="foot-last">
+                <a href="#" id="toTheTop">
+                    <span class="icon-chevron-up"></span>
+                </a>
+            </div> <!-- /bottom footer -->
+
+        </footer> <!-- /footer -->
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
