@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "تعریف محصول جدید";
+    Layout = "~/Views/Shared/_NoHeaderFooterLayout.cshtml";
+}
+
+<div class="master-wrapper">
+
+    <br>
+    <br>
+    <br>
+
+    <!--  ==========  -->
+    <!--  = Main container =  -->
+    <!--  ==========  -->
+    <div class="container">
+        <div class="push-up top-equal blocks-spacer">
+
+            <!--  ==========  -->
+            <!--  = Product =  -->
+            <!--  ==========  -->
+            <div class="row blocks-spacer">
+
+                <!--  ==========  -->
+                <!--  = Preview Images =  -->
+                <!--  ==========  -->
+                <div class="span5">
+                    <div class="product-preview">
+                        <div class="picture">
+                            <img src="~/Content/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" id="mainPreviewImg" />
+                        </div>
+                        <div class="thumbs clearfix">
+                            <div class="thumb active">
+                                <a href="#mainPreviewImg"><img src="~/Content/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" /></a>
+                            </div>
+                            <div class="thumb">
+                                <a href="#mainPreviewImg"><img src="~/Content/images/dummy/products/shirt-2.jpg" alt="" width="940" height="940" /></a>
+                            </div>
+                            <div class="thumb">
+                                <a href="#mainPreviewImg"><img src="~/Content/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--  ==========  -->
+                <!--  = Title and short desc =  -->
+                <!--  ==========  -->
+                <div class="span7">
+                    <div class="product-title">
+                        <input type="text" placeholder="عنوان محصول"></input>
+                        <div class="meta">
+                            <input type="text" placeholder="قیمت به تومان"></input>
+                        </div>
+                    </div>
+                    <div class="product-description">
+                        <input type="text" placeholder="خلاصه ای از شرح محصول بنویسید"></input>
+                        <hr />
+
+                        <form action="#" class="form form-inline clearfix">
+                            <div>
+                                <input name="productKind" id="mobile" type="radio" checked value="mobile" onclick="productKindChooser()">موبایل</input>
+                                <br />
+                                <input name="productKind" id="book" type="radio" value="book" onclick="productKindChooser()">کتاب</input>
+                            </div>
+                            <br />
+                            <div class="numbered">
+                                <input type="text" name="num" value="1" class="tiny-size" />
+                                <span class="clickable add-one icon-plus-sign-alt"></span>
+                                <span class="clickable remove-one icon-minus-sign-alt"></span>
+                            </div>
+                            &nbsp;
+                            <select id="color" name="color" class="span2">
+                                <option value="-1">انتخاب رنگ</option>
+                                <option value="blue">آبی</option>
+                                <option value="orange">نارنجی</option>
+                                <option value="black">مشکی</option>
+                                <option value="red">قرمز</option>
+                                <option value="green">سبز</option>
+                                <option value="yellow">زرد</option>
+                            </select>
+                        </form>
+                        <hr />
+
+                        <!--  ==========  -->
+                        <!--  = Tabs with more info =  -->
+                        <!--  ==========  -->
+                        <div class="row">
+                            <div class="span7">
+                                <ul id="myTab" class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab-1" data-toggle="tab">جزئیات</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="fade in tab-pane active" id="tab-1">
+                                        <h3>توضیحات فنی محصول</h3>
+                                        <textarea style="width:90%;" rows="10" type="text" placeholder="مشخصات فنی محصول را در اینجا بنویسید"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-large bold">ثبت</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- /container -->
+</div>

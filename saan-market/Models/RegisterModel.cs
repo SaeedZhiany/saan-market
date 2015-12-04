@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Web;
 
 namespace saan_market.Models
 {
-    public class Register
+    public class RegisterModel
     {
         [Required]
         public String userName { get; set; }

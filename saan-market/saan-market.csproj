@@ -118,7 +118,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountingController.cs" />
+    <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,13 +131,15 @@
     <Compile Include="Models\Cart.cs">
       <DependentUpon>SaanDBModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\MobileProduct.cs">
       <DependentUpon>SaanDBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
       <DependentUpon>SaanDBModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\SaanDBModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -166,6 +171,11 @@
     <Content Include="Models\SaanDBModels.edmx.diagram">
       <DependentUpon>SaanDBModels.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Product\DefineProduct.cshtml" />
+    <Content Include="Views\Shared\_NoHeaderFooterLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -174,7 +184,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Home\" />
+    <Folder Include="Content\assets\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\images\" />
+    <Folder Include="Content\incl\" />
+    <Folder Include="Content\js\" />
+    <Folder Include="Content\lib\" />
+    <Folder Include="Content\stylesheets\" />
+    <Folder Include="Views\Accounting\" />
+    <Folder Include="Views\Buy\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
