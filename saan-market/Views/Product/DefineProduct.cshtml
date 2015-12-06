@@ -1,8 +1,10 @@
-﻿
+﻿@using saan_market.Models
 @{
     ViewBag.Title = "تعریف محصول جدید";
     Layout = "~/Views/Shared/_NoHeaderFooterLayout.cshtml";
 }
+
+@model ProductModel
 
 <div class="master-wrapper">
 
@@ -48,17 +50,43 @@
                 <!--  = Title and short desc =  -->
                 <!--  ==========  -->
                 <div class="span7">
-                    <div class="product-title">
-                        <input type="text" placeholder="عنوان محصول"></input>
-                        <div class="meta">
-                            <input type="text" placeholder="قیمت به تومان"></input>
-                        </div>
-                    </div>
                     <div class="product-description">
-                        <input type="text" placeholder="خلاصه ای از شرح محصول بنویسید"></input>
-                        <hr />
+                        @using (Html.BeginForm("DefineProduct", "Product", FormMethod.Post, new { @class = "form form-inline clearfix" }))
+                        {
+                            <div class="product-title">
+                                @Html.TextBoxFor(m => m.name, new { @placeholder = "عنوان محصول" })
+                                @Html.ValidationMessageFor( m => m.name, "نام محصول نیاز است")
+                                <br>
+                                <br>
 
+                                <div class="meta">
+                                    @Html.TextBoxFor(m => m.price, new { @type = "number", @placeholder = "قیمت به تومان"})
+                                    @Html.ValidationMessageFor(m => m.price, "قیمت محصول نیاز است")
+                                </div>
+                            </div>
+
+                            @Html.TextAreaFor(m => m.descriptionSummury, new { @placeholder = "خلاصه ای از شرح محصول بنویسید"})
+                            <hr />
+                            
+                            <div>
+                                @Html.RadioButton("productKind", "mobile", new { @id = "mobile", @checked = "true"})
+                                <br />
+                                @Html.RadioButton("productKind", "book", new { @id = "book" })
+                            </div>
+                        }
                         <form action="#" class="form form-inline clearfix">
+                            <div class="product-title">
+                                <input type="text" placeholder="عنوان محصول"></input>
+                                <br>
+                                <br>
+
+                                <div class="meta">
+                                    <input type="text" placeholder="قیمت به تومان"></input>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="خلاصه ای از شرح محصول بنویسید"></input>
+                            <hr />
+
                             <div>
                                 <input name="productKind" id="mobile" type="radio" checked value="mobile" onclick="productKindChooser()">موبایل</input>
                                 <br />
@@ -80,28 +108,28 @@
                                 <option value="green">سبز</option>
                                 <option value="yellow">زرد</option>
                             </select>
-                        </form>
-                        <hr />
 
-                        <!--  ==========  -->
-                        <!--  = Tabs with more info =  -->
-                        <!--  ==========  -->
-                        <div class="row">
-                            <div class="span7">
-                                <ul id="myTab" class="nav nav-tabs">
-                                    <li class="active">
-                                        <a href="#tab-1" data-toggle="tab">جزئیات</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="fade in tab-pane active" id="tab-1">
-                                        <h3>توضیحات فنی محصول</h3>
-                                        <textarea style="width:90%;" rows="10" type="text" placeholder="مشخصات فنی محصول را در اینجا بنویسید"></textarea>
+                            <hr />
+                            <!--  ==========  -->
+                            <!--  = Tabs with more info =  -->
+                            <!--  ==========  -->
+                            <div class="row">
+                                <div class="span7">
+                                    <ul id="myTab" class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#tab-1" data-toggle="tab">جزئیات</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="fade in tab-pane active" id="tab-1">
+                                            <h3>توضیحات فنی محصول</h3>
+                                            <textarea style="width:90%;" rows="10" type="text" placeholder="مشخصات فنی محصول را در اینجا بنویسید"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <button class="btn btn-primary btn-large bold">ثبت</button>
+                            <button class="btn btn-primary btn-large bold">ثبت</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -39,6 +39,7 @@ namespace saan_market.Models
                         MobileProduct mProduct = new MobileProduct();
                         mProduct.Product = product;
                         mProduct.color = color;
+                        
                         mProduct.technicalDescription = technicalDescription;
                         context.MobileProducts.Add(mProduct);
                         context.SaveChanges();
