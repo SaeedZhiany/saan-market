@@ -11,13 +11,13 @@ namespace saan_market.Models
         [Required(ErrorMessage = "قیمت محصول نیاز است")]
         public long price { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "خلاصه شرح محصول نیاز است")]
         public String descriptionSummury { get; set; }
 
         [Required]
         public int available { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "رنگ محصول را انتخاب کنید")]
         public String color { get; set; }
 
         public String technicalDescription { get; set; }
