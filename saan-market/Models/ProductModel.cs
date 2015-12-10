@@ -32,7 +32,7 @@ namespace saan_market.Models
         public bool addProduct()
         {
             try
-            {
+            { 
                 using(DatabaseEntities context = new DatabaseEntities())
                 {
                     Product product = new Product();
