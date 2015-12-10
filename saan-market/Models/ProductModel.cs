@@ -23,28 +23,26 @@ namespace saan_market.Models
         [Required]
         public String technicalDescription { get; set; }
 
+        [Required]
+        public int kind { get; set; } // 1 = mobile, 2 = tablet
+
+        public const int MOBILE = 1;
+        public const int TABLET = 2;
+
         public bool addProduct()
         {
             try
             {
-                using(SaanMarketDBEntities context = new SaanMarketDBEntities())
+                using(DatabaseEntities context = new DatabaseEntities())
                 {
                     Product product = new Product();
                     product.name = name;
                     product.price = price;
                     product.descriptionSummury = descriptionSummury;
                     product.available = available;
-                    if(!color.Equals("") || !technicalDescription.Equals(""))
-                    {
-                        MobileProduct mProduct = new MobileProduct();
-                        mProduct.Product = product;
-                        mProduct.color = color;
-                        
-                        mProduct.technicalDescription = technicalDescription;
-                        context.MobileProducts.Add(mProduct);
-                        context.SaveChanges();
-                        return true;
-                    }
+                    product.color = color;
+                    product.technicalDescription = technicalDescription;
+                    product.kind = kind;
                     context.Products.Add(product);
                     context.SaveChanges();
                     return true;

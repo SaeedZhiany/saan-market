@@ -4,18 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SaanMarketDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="userId" />
-          </Key>
-          <Property Name="userId" Type="int" Nullable="false" />
-          <Property Name="state" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="city" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="street" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="plaque" Type="smallint" Nullable="false" />
-          <Property Name="floor" Type="smallint" Nullable="false" />
-        </EntityType>
+      <Schema Namespace="SaanMarketDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="userid" />
@@ -26,25 +15,27 @@
           <Property Name="orderedCount" Type="smallint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\SAAN-MARKET\SAAN-MARKET\APP_DATA\SAANMARKETDB.MDF.dbo.MobileProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="MobileProduct">
+warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\SAAN-MARKET\SAAN-MARKET\APP_DATA\SAANMARKETDATABASE.MDF.dbo.Picture' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Picture">
           <Key>
-            <PropertyRef Name="color" />
-            <PropertyRef Name="productId" />
+            <PropertyRef Name="path" />
+            <PropertyRef Name="Productid" />
           </Key>
-          <Property Name="color" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="technicalDescription" Type="nvarchar" MaxLength="1000" />
-          <Property Name="productId" Type="int" Nullable="false" />
+          <Property Name="path" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Productid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="price" Type="numeric" Precision="19" Scale="0" Nullable="false" />
           <Property Name="descriptionSummury" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="available" Type="int" Nullable="false" />
+          <Property Name="kind" Type="int" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="technicalDescription" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -53,27 +44,20 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="binary" MaxLength="160" Nullable="false" />
-          <Property Name="fullname" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="81" Nullable="false" />
-          <Property Name="nationalNumber" Type="int" Nullable="false" />
-          <Property Name="birthday" Type="date" />
-          <Property Name="mobileNumber" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="phoneNumber" Type="varchar" MaxLength="15" />
           <Property Name="isAdmin" Type="bit" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="81" />
+          <Property Name="nationalNumber" Type="int" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="mobileNumber" Type="varchar" MaxLength="11" />
+          <Property Name="phoneNumber" Type="varchar" MaxLength="15" />
+          <Property Name="state" Type="nvarchar" MaxLength="20" />
+          <Property Name="city" Type="nvarchar" MaxLength="30" />
+          <Property Name="street" Type="nvarchar" MaxLength="20" />
+          <Property Name="plaque" Type="smallint" />
+          <Property Name="floor" Type="smallint" />
         </EntityType>
-        <Association Name="FKAddress420636">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FKCart288531">
+        <Association Name="ADD to">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -85,7 +69,7 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FKCart446053">
+        <Association Name="added to">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -97,64 +81,46 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FKMobileProd592209">
+        <Association Name="have">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="MobileProduct" Type="Self.MobileProduct" Multiplicity="*" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="MobileProduct">
-              <PropertyRef Name="productId" />
+            <Dependent Role="Picture">
+              <PropertyRef Name="Productid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SaanMarketDBModelStoreContainer">
-          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="SaanMarketDatabaseModelStoreContainer">
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MobileProduct" EntityType="Self.MobileProduct" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="Picture" EntityType="Self.Picture" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [MobileProduct].[color] AS [color], 
-    [MobileProduct].[technicalDescription] AS [technicalDescription], 
-    [MobileProduct].[productId] AS [productId]
-    FROM [dbo].[MobileProduct] AS [MobileProduct]</DefiningQuery>
+    [Picture].[path] AS [path], 
+    [Picture].[Productid] AS [Productid]
+    FROM [dbo].[Picture] AS [Picture]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FKAddress420636" Association="Self.FKAddress420636">
-            <End Role="User" EntitySet="User" />
-            <End Role="Address" EntitySet="Address" />
-          </AssociationSet>
-          <AssociationSet Name="FKCart288531" Association="Self.FKCart288531">
+          <AssociationSet Name="ADD to" Association="Self.ADD to">
             <End Role="User" EntitySet="User" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FKCart446053" Association="Self.FKCart446053">
+          <AssociationSet Name="added to" Association="Self.added to">
             <End Role="Product" EntitySet="Product" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FKMobileProd592209" Association="Self.FKMobileProd592209">
+          <AssociationSet Name="have" Association="Self.have">
             <End Role="Product" EntitySet="Product" />
-            <End Role="MobileProduct" EntitySet="MobileProduct" />
+            <End Role="Picture" EntitySet="Picture" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SaanMarketDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="userId" />
-          </Key>
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="street" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="plaque" Type="Int16" Nullable="false" />
-          <Property Name="floor" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FKAddress420636" FromRole="Address" ToRole="User" />
-        </EntityType>
+      <Schema Namespace="SaanMarketDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="userid" />
@@ -163,20 +129,23 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
           <Property Name="userid" Type="Int32" Nullable="false" />
           <Property Name="productid" Type="Int32" Nullable="false" />
           <Property Name="orderedCount" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FKCart288531" FromRole="Cart" ToRole="User" />
-          <NavigationProperty Name="Product" Relationship="Self.FKCart446053" FromRole="Cart" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="Self.ADD_to" FromRole="Cart" ToRole="User" />
+          <NavigationProperty Name="Product" Relationship="Self.added_to" FromRole="Cart" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
           <Property Name="descriptionSummury" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="available" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Carts" Relationship="Self.FKCart446053" FromRole="Product" ToRole="Cart" />
-          <NavigationProperty Name="MobileProducts" Relationship="Self.FKMobileProd592209" FromRole="Product" ToRole="MobileProduct" />
+          <Property Name="kind" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="technicalDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Carts" Relationship="Self.added_to" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Pictures" Relationship="Self.have" FromRole="Product" ToRole="Picture" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -185,39 +154,30 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="Binary" MaxLength="160" FixedLength="true" Nullable="false" />
-          <Property Name="fullname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="81" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nationalNumber" Type="Int32" Nullable="false" />
-          <Property Name="birthday" Type="DateTime" Precision="0" />
-          <Property Name="mobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="isAdmin" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Address" Relationship="Self.FKAddress420636" FromRole="User" ToRole="Address" />
-          <NavigationProperty Name="Carts" Relationship="Self.FKCart288531" FromRole="User" ToRole="Cart" />
+          <Property Name="fullname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="81" FixedLength="false" Unicode="false" />
+          <Property Name="nationalNumber" Type="Int32" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="mobileNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="phoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="plaque" Type="Int16" />
+          <Property Name="floor" Type="Int16" />
+          <NavigationProperty Name="Carts" Relationship="Self.ADD_to" FromRole="User" ToRole="Cart" />
         </EntityType>
-        <EntityType Name="MobileProduct">
+        <EntityType Name="Picture">
           <Key>
-            <PropertyRef Name="color" />
-            <PropertyRef Name="productId" />
+            <PropertyRef Name="path" />
+            <PropertyRef Name="Productid" />
           </Key>
-          <Property Name="color" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="technicalDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="productId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FKMobileProd592209" FromRole="MobileProduct" ToRole="Product" />
+          <Property Name="path" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Productid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.have" FromRole="Picture" ToRole="Product" />
         </EntityType>
-        <Association Name="FKAddress420636">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FKCart288531">
+        <Association Name="ADD_to">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -229,7 +189,7 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FKCart446053">
+        <Association Name="added_to">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -241,39 +201,34 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FKMobileProd592209">
+        <Association Name="have">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="MobileProduct" Type="Self.MobileProduct" Multiplicity="*" />
+          <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="MobileProduct">
-              <PropertyRef Name="productId" />
+            <Dependent Role="Picture">
+              <PropertyRef Name="Productid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SaanMarketDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Addresses" EntityType="Self.Address" />
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Carts" EntityType="Self.Cart" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="MobileProducts" EntityType="Self.MobileProduct" />
-          <AssociationSet Name="FKAddress420636" Association="Self.FKAddress420636">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Address" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="FKCart288531" Association="Self.FKCart288531">
+          <EntitySet Name="Pictures" EntityType="Self.Picture" />
+          <AssociationSet Name="ADD_to" Association="Self.ADD_to">
             <End Role="User" EntitySet="Users" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
-          <AssociationSet Name="FKCart446053" Association="Self.FKCart446053">
+          <AssociationSet Name="added_to" Association="Self.added_to">
             <End Role="Product" EntitySet="Products" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
-          <AssociationSet Name="FKMobileProd592209" Association="Self.FKMobileProd592209">
+          <AssociationSet Name="have" Association="Self.have">
             <End Role="Product" EntitySet="Products" />
-            <End Role="MobileProduct" EntitySet="MobileProducts" />
+            <End Role="Picture" EntitySet="Pictures" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -281,21 +236,9 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SaanMarketDBModelStoreContainer" CdmEntityContainer="SaanMarketDBEntities">
-          <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="SaanMarketDBModel.Address">
-              <MappingFragment StoreEntitySet="Address">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="street" ColumnName="street" />
-                <ScalarProperty Name="plaque" ColumnName="plaque" />
-                <ScalarProperty Name="floor" ColumnName="floor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="SaanMarketDatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
           <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="SaanMarketDBModel.Cart">
+            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.Cart">
               <MappingFragment StoreEntitySet="Cart">
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="productid" ColumnName="productid" />
@@ -304,38 +247,45 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="SaanMarketDBModel.Product">
+            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="descriptionSummury" ColumnName="descriptionSummury" />
                 <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="technicalDescription" ColumnName="technicalDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="SaanMarketDBModel.User">
+            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
                 <ScalarProperty Name="fullname" ColumnName="fullname" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="nationalNumber" ColumnName="nationalNumber" />
                 <ScalarProperty Name="birthday" ColumnName="birthday" />
                 <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
                 <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="plaque" ColumnName="plaque" />
+                <ScalarProperty Name="floor" ColumnName="floor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MobileProducts">
-            <EntityTypeMapping TypeName="SaanMarketDBModel.MobileProduct">
-              <MappingFragment StoreEntitySet="MobileProduct">
-                <ScalarProperty Name="color" ColumnName="color" />
-                <ScalarProperty Name="technicalDescription" ColumnName="technicalDescription" />
-                <ScalarProperty Name="productId" ColumnName="productId" />
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="Productid" ColumnName="Productid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

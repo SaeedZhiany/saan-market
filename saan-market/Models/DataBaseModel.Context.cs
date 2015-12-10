@@ -13,10 +13,10 @@ namespace saan_market.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SaanMarketDBEntities : DbContext
+    public partial class DatabaseEntities : DbContext
     {
-        public SaanMarketDBEntities()
-            : base("name=SaanMarketDBEntities")
+        public DatabaseEntities()
+            : base("name=DatabaseEntities")
         {
         }
     
@@ -25,10 +25,9 @@ namespace saan_market.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<MobileProduct> MobileProducts { get; set; }
+        public virtual DbSet<Picture> Pictures { get; set; }
     }
 }

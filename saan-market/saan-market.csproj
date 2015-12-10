@@ -99,20 +99,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SaanMarketDB.mdf" />
-    <Content Include="App_Data\SaanMarketDB_log.ldf">
-      <DependentUpon>SaanMarketDB.mdf</DependentUpon>
+    <Content Include="App_Data\SaanMarketDatabase.mdf" />
+    <Content Include="App_Data\SaanMarketDatabase_log.ldf">
+      <DependentUpon>SaanMarketDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Models\SaanDBModels.Context.tt">
+    <Content Include="Models\DataBaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SaanDBModels.edmx</DependentUpon>
-      <LastGenOutput>SaanDBModels.Context.cs</LastGenOutput>
+      <DependentUpon>DataBaseModel.edmx</DependentUpon>
+      <LastGenOutput>DataBaseModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\SaanDBModels.tt">
+    <Content Include="Models\DataBaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SaanDBModels.edmx</DependentUpon>
-      <LastGenOutput>SaanDBModels.cs</LastGenOutput>
+      <DependentUpon>DataBaseModel.edmx</DependentUpon>
+      <LastGenOutput>DataBaseModel.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -125,38 +125,35 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Address.cs">
-      <DependentUpon>SaanDBModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Cart.cs">
-      <DependentUpon>SaanDBModels.tt</DependentUpon>
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\LogInModel.cs" />
-    <Compile Include="Models\MobileProduct.cs">
-      <DependentUpon>SaanDBModels.tt</DependentUpon>
+    <Compile Include="Models\Picture.cs">
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>SaanDBModels.tt</DependentUpon>
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\SaanDBModels.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SaanDBModels.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SaanDBModels.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SaanDBModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SaanDBModels.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SaanDBModels.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>SaanDBModels.tt</DependentUpon>
+      <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,18 +161,18 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <EntityDeploy Include="Models\SaanDBModels.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SaanDBModels.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SaanDBModels.edmx.diagram">
-      <DependentUpon>SaanDBModels.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Product\DefineProduct.cshtml" />
     <Content Include="Views\Shared\_NoHeaderFooterLayout.cshtml" />
+    <EntityDeploy Include="Models\DataBaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataBaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DataBaseModel.edmx.diagram">
+      <DependentUpon>DataBaseModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

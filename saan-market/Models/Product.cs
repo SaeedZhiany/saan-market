@@ -18,7 +18,7 @@ namespace saan_market.Models
         public Product()
         {
             this.Carts = new HashSet<Cart>();
-            this.MobileProducts = new HashSet<MobileProduct>();
+            this.Pictures = new HashSet<Picture>();
         }
     
         public int id { get; set; }
@@ -26,10 +26,13 @@ namespace saan_market.Models
         public decimal price { get; set; }
         public string descriptionSummury { get; set; }
         public int available { get; set; }
+        public int kind { get; set; }
+        public string color { get; set; }
+        public string technicalDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MobileProduct> MobileProducts { get; set; }
+        public virtual ICollection<Picture> Pictures { get; set; }
     }
 }

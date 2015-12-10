@@ -23,15 +23,19 @@ namespace saan_market.Models
         public int id { get; set; }
         public string username { get; set; }
         public byte[] password { get; set; }
+        public bool isAdmin { get; set; }
         public string fullname { get; set; }
         public string email { get; set; }
-        public int nationalNumber { get; set; }
+        public Nullable<int> nationalNumber { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
         public string mobileNumber { get; set; }
         public string phoneNumber { get; set; }
-        public bool isAdmin { get; set; }
+        public string state { get; set; }
+        public string city { get; set; }
+        public string street { get; set; }
+        public Nullable<short> plaque { get; set; }
+        public Nullable<short> floor { get; set; }
     
-        public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
     }

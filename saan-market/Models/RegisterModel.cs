@@ -18,34 +18,11 @@ namespace saan_market.Models
         [Compare("password", ErrorMessage = "کلمه عبور با تکرار آن یکسان نیست. لطفا دوباره امتحان کنید.")]
         public String confirmPassword { get; set; }
 
-        [Required]
-        public String fullName { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public String email { get; set; }
-
-        [Required]
-        [MaxLength(10, ErrorMessage = "کد ملی باید ده رقمی باشد")]
-        [MinLength(10, ErrorMessage = "کد ملی باید ده رقمی باشد")]
-        public int nationalNumber { get; set; }
-
-        [Required]
-        public DateTime birthDay { get; set; }
-
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        public String mobileNumber { get; set; }
-
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        public String phoneNumber { get; set; }
-
         public bool registerUser()
         {
             try
             {
-                using (SaanMarketDBEntities context = new SaanMarketDBEntities())
+                using (DatabaseEntities context = new DatabaseEntities())
                 {
                     User user = new User();
                     user.username = userName;
@@ -53,12 +30,6 @@ namespace saan_market.Models
                     byte[] passBytes = System.Text.Encoding.UTF8.GetBytes(password);
                     byte[] passHash = sha.ComputeHash(passBytes);
                     user.password = passHash;
-                    user.fullname = fullName;
-                    user.email = email;
-                    user.nationalNumber = nationalNumber;
-                    user.birthday = birthDay;
-                    user.mobileNumber = mobileNumber;
-                    user.phoneNumber = phoneNumber;
                     user.isAdmin = false;
                     context.Users.Add(user);
                     context.SaveChanges();

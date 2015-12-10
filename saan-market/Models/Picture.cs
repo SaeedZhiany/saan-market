@@ -12,15 +12,11 @@ namespace saan_market.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Address
+    public partial class Picture
     {
-        public int userId { get; set; }
-        public string state { get; set; }
-        public string city { get; set; }
-        public string street { get; set; }
-        public short plaque { get; set; }
-        public short floor { get; set; }
+        public string path { get; set; }
+        public int Productid { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

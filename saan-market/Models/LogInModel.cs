@@ -13,15 +13,15 @@ namespace saan_market.Models
         [Required]
         public String password { get; set; }
 
-        public int logIn()
+        public Tuple<int, bool> logIn()
         {
             try
             {
-                using(SaanMarketDBEntities context = new SaanMarketDBEntities())
+                using(DatabaseEntities context = new DatabaseEntities())
                 {
-                    var query = (from u in context.Users
-                                 where u.username == userName
-                                 select new { u.id, u.password, u.isAdmin });
+                    var query = (from user in context.Users
+                                 where user.username == userName
+                                 select new { user.id, user.password, user.isAdmin });
                     if(query.Count() == 1)
                     {
                         var result = query.First();
@@ -29,7 +29,7 @@ namespace saan_market.Models
                         byte[] passBytes = System.Text.Encoding.UTF8.GetBytes(password);
                         byte[] passHash = sha.ComputeHash(passBytes);
                         if (result.password.Equals(passHash))
-                            return result.id;
+                            return Tuple.Create(result.id, result.isAdmin);
                         
                     }
 
