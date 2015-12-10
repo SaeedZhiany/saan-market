@@ -46,6 +46,7 @@ namespace saan_market.Models
                     context.Products.Add(product);
                     context.SaveChanges();
                     return true;
+
                 }
 
             }
