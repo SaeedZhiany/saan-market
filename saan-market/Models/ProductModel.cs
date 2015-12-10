@@ -20,10 +20,10 @@ namespace saan_market.Models
         [Required]
         public String color { get; set; }
 
-        [Required]
         public String technicalDescription { get; set; }
 
         [Required]
+        [Display(GroupName = "kind")]
         public int kind { get; set; } // 1 = mobile, 2 = tablet
 
         public const int MOBILE = 1;

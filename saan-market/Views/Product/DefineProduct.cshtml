@@ -69,10 +69,17 @@
                             <hr />
                             
                             <div>
-                                @Html.RadioButton("productKind", "mobile", new { @id = "mobile", @checked = "true"})
+                                @Html.RadioButtonFor(m => m.kind, 1, new { @checked = "checked"}) موبایل
                                 <br />
-                                @Html.RadioButton("productKind", "book", new { @id = "book" })
+                                @Html.RadioButtonFor(m => m.kind, 2) تبلت
                             </div>
+                            <br />
+                            <div class="numbered">
+                                @Html.TextBoxFor(m => m.available, new { @class="tiny-size", @Value="1" , @name="num" })
+                                <span class="clickable add-one icon-plus-sign-alt"></span>
+                                <span class="clickable remove-one icon-minus-sign-alt"></span>
+                            </div>
+                            
                         }
                         <form action="#" class="form form-inline clearfix">
                             <div class="product-title">
