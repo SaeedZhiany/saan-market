@@ -1,12 +1,23 @@
 ﻿@using saan_market.Models
 @{
     ViewBag.Title = "تعریف محصول جدید";
+    
+    var colorsList = new List<SelectListItem>
+        {
+          new SelectListItem { Text = "آبی", Value="blue" },
+          new SelectListItem { Text = "نارنجی", Value="orange" },
+          new SelectListItem { Text = "مشکی", Value="black" },
+          new SelectListItem { Text = "قرمز", Value="red" },
+          new SelectListItem { Text = "سبز", Value="green" },
+          new SelectListItem { Text = "زرد", Value="yellow" }
+        };
     Layout = "~/Views/Shared/_NoHeaderFooterLayout.cshtml";
+    
 }
 
-@model ProductModel
+    @model ProductModel
 
-<div class="master-wrapper">
+        <div class="master-wrapper">
 
     <br>
     <br>
@@ -55,13 +66,13 @@
                         {
                             <div class="product-title">
                                 @Html.TextBoxFor(m => m.name, new { @placeholder = "عنوان محصول" })
-                                @Html.ValidationMessageFor( m => m.name, "نام محصول نیاز است")
+                                @Html.ValidationMessageFor( m => m.name, "", new { @style="color:red" })
                                 <br>
                                 <br>
 
                                 <div class="meta">
                                     @Html.TextBoxFor(m => m.price, new { @type = "number", @placeholder = "قیمت به تومان"})
-                                    @Html.ValidationMessageFor(m => m.price, "قیمت محصول نیاز است")
+                                    @Html.ValidationMessageFor(m => m.price, "", new { @style = "color:red" })
                                 </div>
                             </div>
 
@@ -79,43 +90,8 @@
                                 <span class="clickable add-one icon-plus-sign-alt"></span>
                                 <span class="clickable remove-one icon-minus-sign-alt"></span>
                             </div>
-                            
-                        }
-                        <form action="#" class="form form-inline clearfix">
-                            <div class="product-title">
-                                <input type="text" placeholder="عنوان محصول"></input>
-                                <br>
-                                <br>
-
-                                <div class="meta">
-                                    <input type="text" placeholder="قیمت به تومان"></input>
-                                </div>
-                            </div>
-                            <input type="text" placeholder="خلاصه ای از شرح محصول بنویسید"></input>
-                            <hr />
-
-                            <div>
-                                <input name="productKind" id="mobile" type="radio" checked value="mobile" onclick="productKindChooser()">موبایل</input>
-                                <br />
-                                <input name="productKind" id="book" type="radio" value="book" onclick="productKindChooser()">کتاب</input>
-                            </div>
-                            <br />
-                            <div class="numbered">
-                                <input type="text" name="num" value="1" class="tiny-size" />
-                                <span class="clickable add-one icon-plus-sign-alt"></span>
-                                <span class="clickable remove-one icon-minus-sign-alt"></span>
-                            </div>
-                            &nbsp;
-                            <select id="color" name="color" class="span2">
-                                <option value="-1">انتخاب رنگ</option>
-                                <option value="blue">آبی</option>
-                                <option value="orange">نارنجی</option>
-                                <option value="black">مشکی</option>
-                                <option value="red">قرمز</option>
-                                <option value="green">سبز</option>
-                                <option value="yellow">زرد</option>
-                            </select>
-
+                            @:&nbsp;
+                            @Html.DropDownListFor(m => m.color, colorsList, "انتخاب رنگ", new { @class="span2", @name="color", @id="color"} )
                             <hr />
                             <!--  ==========  -->
                             <!--  = Tabs with more info =  -->
@@ -130,13 +106,13 @@
                                     <div class="tab-content">
                                         <div class="fade in tab-pane active" id="tab-1">
                                             <h3>توضیحات فنی محصول</h3>
-                                            <textarea style="width:90%;" rows="10" type="text" placeholder="مشخصات فنی محصول را در اینجا بنویسید"></textarea>
+                                            @Html.TextAreaFor(m => m.technicalDescription, new { @style="width:90%;", @rows="10", @placeholder= "مشخصات فنی محصول را در اینجا بنویسید" })
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-large bold">ثبت</button>
-                        </form>
+                            <input type="submit" class="btn btn-primary btn-large bold" value="ثبت">
+                        }    
                     </div>
                 </div>
             </div>

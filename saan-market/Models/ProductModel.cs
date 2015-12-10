@@ -5,10 +5,10 @@ namespace saan_market.Models
 {
     public class ProductModel
     {
-        [Required]
+        [Required(ErrorMessage = "نام محصول نیاز است")]
         public String name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "قیمت محصول نیاز است")]
         public long price { get; set; }
 
         [Required]
