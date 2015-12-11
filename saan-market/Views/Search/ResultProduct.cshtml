@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "ResultProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="push-up">
+        <div class="row">
+
+            <!--  ==========  -->
+            <!--  = Sidebar =  -->
+            <!--  ==========  -->
+            <aside class="span3 left-sidebar">
+                <div class="sidebar-item sidebar-filters" id="sidebarFilters">
+
+                    <!--  ==========  -->
+                    <!--  = Sidebar Title =  -->
+                    <!--  ==========  -->
+                    <div class="underlined">
+                        <h3><span class="light">بر اساس فیلتر</span> جستجو کنید</h3>
+                    </div>
+
+                    <!--  ==========  -->
+                    <!--  = Categories =  -->
+                    <!--  ==========  -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterOne">دسته بندی ها <b class="caret"></b></a>
+                        </div>
+                        <div id="filterOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <a href="#" data-target=".filter--accessories" class="selectable"><i class="box"></i> موبایل</a>
+                                <a href="#" data-target=".filter--bags, .filter--hats" class="selectable"><i class="box"></i>تبلت</a>
+
+                            </div>
+                        </div>
+                    </div> <!-- /categories -->
+                    <!--  ==========  -->
+                    <!--  = Prices slider =  -->
+                    <!--  ==========  -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" href="#filterPrices">قیمت <b class="caret"></b></a>
+                        </div>
+                        <div id="filterPrices" class="accordion-body in collapse">
+                            <div class="accordion-inner with-slider">
+                                <div class="jqueryui-slider-container">
+                                    <div id="pricesRange"></div>
+                                </div>
+                                <input type="text" data-initial="432" class="max-val span1 pull-right" disabled />
+                                <input type="text" data-initial="99" class="min-val span1" disabled />
+                            </div>
+                        </div>
+                    </div> <!-- /prices slider -->
+                    <!--  ==========  -->
+                    <!--  = Color filter =  -->
+                    <!--  ==========  -->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#filterThree">رنگ <b class="caret"></b></a>
+                        </div>
+                        <div id="filterThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <a href="#" data-target="red" data-type="color" class="selectable detailed"><i class="box"></i> قرمز</a>
+                                <a href="#" data-target="green" data-type="color" class="selectable detailed"><i class="box"></i> سبز</a>
+                                <a href="#" data-target="blue" data-type="color" class="selectable detailed"><i class="box"></i> آبی</a>
+                                <a href="#" data-target="pink" data-type="color" class="selectable detailed"><i class="box"></i> صورتی</a>
+                                <a href="#" data-target="purple" data-type="color" class="selectable detailed"><i class="box"></i> بنفش</a>
+                                <a href="#" data-target="orange" data-type="color" class="selectable detailed"><i class="box"></i> نارنجی</a>
+
+                            </div>
+                        </div>
+                    </div> <!-- /color filter -->
+                    <!--  ==========  -->
+                    <!--  = Brand filter =  -->
+                    <!--  ==========  -->
+     
+                    <a href="#" class="remove-filter" id="removeFilters"><span class="icon-ban-circle"></span> حذف همه فیلتر ها</a>
+
+                </div>
+            </aside> <!-- /sidebar -->
+            <!--  ==========  -->
+            <!--  = Main content =  -->
+            <!--  ==========  -->
+            <section class="span9 blocks-spacer">
+
+                <!--  ==========  -->
+                <!--  = Title =  -->
+                <!--  ==========  -->
+                <div class="underlined push-down-20">
+                    <div class="row">
+                        <div class="span5">
+                            <h3><span class="light">جستجو:</span> &quot;Horsefeathers&quot;</h3>
+                        </div>
+                        <div class="span4">
+                            <div class="form-inline sorting-by">
+                                <label for="isotopeSorting" class="black-clr">چینش:</label>
+                                <select id="isotopeSorting" class="span3">
+                                    <option value='{"sortBy":"price", "sortAscending":"true"}'>بر اساس قیمت (کم به زیاد) &uarr;</option>
+                                    <option value='{"sortBy":"price", "sortAscending":"false"}'>بر اساس قیمت (زیاد به کم) &darr;</option>
+                                    <option value='{"sortBy":"name", "sortAscending":"true"}'>بر اساس نام (صعودی) &uarr;</option>
+                                    <option value='{"sortBy":"name", "sortAscending":"false"}'>بر اساس نام (نزولی) &darr;</option>
+                                    <option value='{"sortBy":"popularity", "sortAscending":"true"}'>بر اساس محبوبیت (کم به زیاد) &uarr;</option>
+                                    <option value='{"sortBy":"popularity", "sortAscending":"false"}'>بر اساس محبوبیت (زیاد به کم) &darr;</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /title -->
+                <!--  ==========  -->
+                <!--  = Products =  -->
+                <!--  ==========  -->
+                <div class="row popup-products">
+                    <div id="isotopeContainer" class="isotope-container">
+
+
+                            
+
+                    </div>
+                </div>
+                <hr />
+            </section> <!-- /main content -->
+        </div>
+    </div>
+</div> <!-- /container -->
+
