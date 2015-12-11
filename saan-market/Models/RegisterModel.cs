@@ -34,7 +34,6 @@ namespace saan_market.Models
                     context.Users.Add(user);
                     context.SaveChanges();
                 }
-
                 return true;
             }catch (Exception e)
             {
