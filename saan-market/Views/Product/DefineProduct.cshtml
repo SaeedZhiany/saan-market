@@ -1,7 +1,7 @@
 ﻿@using saan_market.Models
 @{
     ViewBag.Title = "تعریف محصول جدید";
-    
+
     var colorsList = new List<SelectListItem>
         {
           new SelectListItem { Text = "آبی", Value="blue" },
@@ -12,7 +12,12 @@
           new SelectListItem { Text = "زرد", Value="yellow" }
         };
     Layout = "~/Views/Shared/_NoHeaderFooterLayout.cshtml";
-    
+
+    List<string> paths = new List<string>();
+    paths.Add("a");
+    paths.Add("a");
+    paths.Add("a");
+
 }
 
     @model ProductModel
@@ -44,13 +49,16 @@
                         </div>
                         <div class="thumbs clearfix">
                             <div class="thumb active">
-                                <a href="#mainPreviewImg"><img src="~/Content/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="@Url.Content(paths.ElementAt(0))" id="image0" width="940" height="940" /></a>
+                                <input type="file" onchange="show(this)" />
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="~/Content/images/dummy/products/shirt-2.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="@Url.Content(paths.ElementAt(1))" id="image1" alt="" width="940" height="940" /></a>
+                                <input type="file" onchange="show(this)" />
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="~/Content/images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                                <a href="#mainPreviewImg"><img src="@Url.Content(paths.ElementAt(2))" id="image2" alt="" width="940" height="940" /></a>
+                                <input type="file" onchange="show(this)" />
                             </div>
                         </div>
 
@@ -62,7 +70,7 @@
                 <!--  ==========  -->
                 <div class="span7">
                     <div class="product-description">
-                        @using (Html.BeginForm("DefineProduct", "Product", FormMethod.Post, new { @class = "form form-inline clearfix" }))
+                        @using (Html.BeginForm("DefineProduct", "Product", FormMethod.Post, new { @class = "form form-inline clearfix", enctype = "multipart/form-data" }))
                         {
                             <div class="product-title">
                                 @Html.TextBoxFor(m => m.name, new { @placeholder = "عنوان محصول" })
@@ -122,3 +130,15 @@
         </div>
     </div> <!-- /container -->
 </div>
+
+<script type="text/javascript">
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('image0').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script> 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace saan_market.Models
@@ -6,21 +7,21 @@ namespace saan_market.Models
     public class ProductModel
     {
         [Required(ErrorMessage = "نام محصول نیاز است")]
-        public String name { get; set; }
+        public string name { get; set; }
 
         [Required(ErrorMessage = "قیمت محصول نیاز است")]
         public long price { get; set; }
 
         [Required(ErrorMessage = "خلاصه شرح محصول نیاز است")]
-        public String descriptionSummury { get; set; }
+        public string descriptionSummury { get; set; }
 
         [Required]
         public int available { get; set; }
 
         [Required(ErrorMessage = "رنگ محصول را انتخاب کنید")]
-        public String color { get; set; }
+        public string color { get; set; }
 
-        public String technicalDescription { get; set; }
+        public string technicalDescription { get; set; }
 
         [Required]
         [Display(GroupName = "kind")]
@@ -28,6 +29,8 @@ namespace saan_market.Models
 
         public const int MOBILE = 1;
         public const int TABLET = 2;
+        
+        public ICollection<string> paths { get; set; }
 
         public bool addProduct()
         {
@@ -43,6 +46,14 @@ namespace saan_market.Models
                     product.color = color;
                     product.technicalDescription = technicalDescription;
                     product.kind = kind;
+                    foreach (string path in paths)
+                    {
+                        Picture pic = new Picture();
+                        pic.path = path;
+                        pic.Product = product;
+                        product.Pictures.Add(pic);
+                    }
+                        
                     context.Products.Add(product);
                     context.SaveChanges();
                     return true;

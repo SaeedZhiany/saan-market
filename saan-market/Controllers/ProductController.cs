@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,12 +15,28 @@ namespace saan_market.Controllers
         }
 
         [HttpPost]
-        public ActionResult DefineProduct(Models.ProductModel product)
+        public ActionResult DefineProduct(Models.ProductModel product, ICollection<HttpPostedFileBase> images)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if(images.Count() == 0)
+                    {
+                        ModelState.AddModelError("", "عکسی برای محصول انتخاب نمایید.");
+                        return RedirectToAction("DefineProduct", "Product");
+                    }
+                    foreach (HttpPostedFileBase image in images)
+                    {
+                        if (image != null && image.ContentLength > 0)
+                        {
+                            /*var path = Path.Combine(Server.MapPath(@"~/Content/images/productImages/" + product.CategoryId), image.FileName);
+                            image.SaveAs(path);
+                            product.paths.Add(path);*/
+                        }
+                        
+                    }
+                        
                     if (product.addProduct())
                     {
                         return RedirectToAction("DefineProduct", "Product");
