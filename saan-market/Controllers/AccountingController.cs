@@ -10,6 +10,37 @@ namespace saan_market.Controllers
 {
     public class AccountingController : Controller
     {
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(AccountingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                { 
+                    if (model.register())
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (e.Message.Equals(""))
+                        ModelState.AddModelError("", "خطا در ذخیره سازی محصول در پایگاه داده، لطفا دوباره امتحان کنید.");
+                    else
+                        ModelState.AddModelError("", e.Message.ToString());
+                    return View();
+                }
+            }
+            ModelState.AddModelError("", "لطفا فیلدهای لازم را به درستی وارد کنید.");
+            return View();
+        }
+
         public ActionResult Adminstrator()
         {
             return View();

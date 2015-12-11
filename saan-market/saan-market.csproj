@@ -717,7 +717,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\Picture.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
@@ -725,7 +724,7 @@
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\AccountingModel.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
@@ -878,6 +877,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\saan-market.pubxml" />
     <Content Include="Views\Accounting\Adminstrator.cshtml" />
+    <Content Include="Views\Accounting\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
