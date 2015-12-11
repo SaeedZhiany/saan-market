@@ -15,7 +15,7 @@ namespace saan_market.Controllers
         }
 
         [HttpPost]
-        public ActionResult DefineProduct(Models.ProductModel product, ICollection<HttpPostedFileBase> images)
+        public ActionResult DefineProduct(Models.ProductModel product, IEnumerable<HttpPostedFileBase> images)
         {
             if (ModelState.IsValid)
             {
@@ -30,9 +30,9 @@ namespace saan_market.Controllers
                     {
                         if (image != null && image.ContentLength > 0)
                         {
-                            /*var path = Path.Combine(Server.MapPath(@"~/Content/images/productImages/" + product.CategoryId), image.FileName);
+                            var path = Path.Combine(Server.MapPath(@"~/Content/images/productImages/"), image.FileName);
                             image.SaveAs(path);
-                            product.paths.Add(path);*/
+                            product.paths.Add(path);
                         }
                         
                     }
@@ -44,7 +44,11 @@ namespace saan_market.Controllers
                 }
                 catch (Exception e)
                 {
-                    ModelState.AddModelError("", "خطا در ذخیره سازی محصول در پایگاه داده، لطفا دوباره امتحان کنید.");
+                    if(e.Message.Equals(""))
+                        ModelState.AddModelError("", "خطا در ذخیره سازی محصول در پایگاه داده، لطفا دوباره امتحان کنید.");
+                    else
+                        ModelState.AddModelError("", e.Message.ToString());
+                    return View(product);
                 }
             }
             ModelState.AddModelError("", "لطفا فیلدهای لازم را به درستی وارد کنید.");

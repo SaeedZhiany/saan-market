@@ -13,15 +13,16 @@
         };
     Layout = "~/Views/Shared/_NoHeaderFooterLayout.cshtml";
 
-    List<string> paths = new List<string>();
-    paths.Add("a");
-    paths.Add("a");
-    paths.Add("a");
+    List<string> uploadedImages = new List<string>();
+    uploadedImages.Add("a");
+    uploadedImages.Add("a");
+    uploadedImages.Add("a");
 
 }
 
-    @model ProductModel
-
+@model ProductModel
+@using (Html.BeginForm("DefineProduct", "Product", FormMethod.Post, new { @class = "form form-inline clearfix", @enctype = "multipart/form-data" }))
+{
         <div class="master-wrapper">
 
     <br>
@@ -45,20 +46,20 @@
                 <div class="span5">
                     <div class="product-preview">
                         <div class="picture">
-                            <img src="~/Content/images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" id="mainPreviewImg" />
+                            <img src="@Url.Content(uploadedImages.ElementAt(0))" alt="پیش نمایش تصویر" width="940" height="940" id="mainPreviewImg" />
                         </div>
                         <div class="thumbs clearfix">
                             <div class="thumb active">
-                                <a href="#mainPreviewImg"><img src="@Url.Content(paths.ElementAt(0))" id="image0" width="940" height="940" /></a>
-                                <input type="file" onchange="show(this)" />
+                                <a href="#mainPreviewImg"><img src="@Url.Content(uploadedImages.ElementAt(0))"  id="images_0" alt="عکس اول" width="940" height="940" /></a>
+                                <input type="file" onchange="show(this, 'images_0')" name="images" style="width:85%" />
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="@Url.Content(paths.ElementAt(1))" id="image1" alt="" width="940" height="940" /></a>
-                                <input type="file" onchange="show(this)" />
+                                <a href="#mainPreviewImg"><img src="@Url.Content(uploadedImages.ElementAt(1))"  id="images_1" alt="عکس دوم" width="940" height="940" /></a>
+                                <input type="file" onchange="show(this, 'images_1')" name="images" style="width:85%" />
                             </div>
                             <div class="thumb">
-                                <a href="#mainPreviewImg"><img src="@Url.Content(paths.ElementAt(2))" id="image2" alt="" width="940" height="940" /></a>
-                                <input type="file" onchange="show(this)" />
+                                <a href="#mainPreviewImg"><img src="@Url.Content(uploadedImages.ElementAt(2))"  id="images_2" alt="عکس سوم" width="940" height="940" /></a>
+                                <input type="file" onchange="show(this, 'images_2')" name="images" style="width:85%" />
                             </div>
                         </div>
 
@@ -70,38 +71,40 @@
                 <!--  ==========  -->
                 <div class="span7">
                     <div class="product-description">
-                        @using (Html.BeginForm("DefineProduct", "Product", FormMethod.Post, new { @class = "form form-inline clearfix", enctype = "multipart/form-data" }))
-                        {
+                        
+                            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger in fade" })
+                            <br />
+                            <br />
                             <div class="product-title">
                                 @Html.TextBoxFor(m => m.name, new { @placeholder = "عنوان محصول" })
-                                @Html.ValidationMessageFor( m => m.name, "", new { @style="color:red" })
+                                @Html.ValidationMessageFor(m => m.name, "", new { @style = "color:red" })
                                 <br>
                                 <br>
 
                                 <div class="meta">
-                                    @Html.TextBoxFor(m => m.price, new { @type = "number", @placeholder = "قیمت به تومان"})
+                                    @Html.TextBoxFor(m => m.price, new { @type = "number", @placeholder = "قیمت به تومان" })
                                     @Html.ValidationMessageFor(m => m.price, "", new { @style = "color:red" })
                                 </div>
                             </div>
 
-                            @Html.TextAreaFor(m => m.descriptionSummury, new { @placeholder = "خلاصه ای از شرح محصول بنویسید"})
-                            @Html.ValidationMessageFor(m => m.descriptionSummury, "", new { @style="color:red" })
+                            @Html.TextAreaFor(m => m.descriptionSummury, new { @placeholder = "خلاصه ای از شرح محصول بنویسید" })
+                            @Html.ValidationMessageFor(m => m.descriptionSummury, "", new { @style = "color:red" })
                             <hr />
                             
                             <div>
-                                @Html.RadioButtonFor(m => m.kind, 1, new { @checked = "checked"}) موبایل
+                                @Html.RadioButtonFor(m => m.kind, 1, new { @checked = "checked" }) موبایل
                                 <br />
                                 @Html.RadioButtonFor(m => m.kind, 2) تبلت
                             </div>
                             <br />
                             <div class="numbered">
-                                @Html.TextBoxFor(m => m.available, new { @class="tiny-size", @Value="1" , @name="num" })
+                                @Html.TextBoxFor(m => m.available, new { @class = "tiny-size", @Value = "1", @name = "num" })
                                 <span class="clickable add-one icon-plus-sign-alt"></span>
                                 <span class="clickable remove-one icon-minus-sign-alt"></span>
                             </div>
-                            @:&nbsp;
-                            @Html.DropDownListFor(m => m.color, colorsList, "انتخاب رنگ", new { @class="span2", @name="color", @id="color"} )
-                            @Html.ValidationMessageFor(m => m.color, "", new { @style="color:red"})
+                            
+                            @Html.DropDownListFor(m => m.color, colorsList, "انتخاب رنگ", new { @class = "span2", @name = "color", @id = "color" })
+                            @Html.ValidationMessageFor(m => m.color, "", new { @style = "color:red" })
                             <hr />
                             <!--  ==========  -->
                             <!--  = Tabs with more info =  -->
@@ -116,13 +119,13 @@
                                     <div class="tab-content">
                                         <div class="fade in tab-pane active" id="tab-1">
                                             <h3>توضیحات فنی محصول</h3>
-                                            @Html.TextAreaFor(m => m.technicalDescription, new { @style="width:90%;", @rows="10", @placeholder= "مشخصات فنی محصول را در اینجا بنویسید" })
+                                            @Html.TextAreaFor(m => m.technicalDescription, new { @style = "width:90%;", @rows = "10", @placeholder = "مشخصات فنی محصول را در اینجا بنویسید" })
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <input type="submit" class="btn btn-primary btn-large bold" value="ثبت">
-                        }    
+                            
                     </div>
                 </div>
             </div>
@@ -130,15 +133,15 @@
         </div>
     </div> <!-- /container -->
 </div>
-
+}
 <script type="text/javascript">
-    function show(input) {
+    function show(input,id) {
         if (input.files && input.files[0]) {
             var filerdr = new FileReader();
             filerdr.onload = function (e) {
-                $('image0').attr('src', e.target.result);
+                $('#'+id).attr('src', e.target.result);
             }
             filerdr.readAsDataURL(input.files[0]);
         }
     }
-</script> 
+</script>

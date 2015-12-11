@@ -30,6 +30,7 @@ namespace saan_market.Models
         public const int MOBILE = 1;
         public const int TABLET = 2;
         
+        
         public ICollection<string> paths { get; set; }
 
         public bool addProduct()
