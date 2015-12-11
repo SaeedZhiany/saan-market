@@ -9,6 +9,7 @@ namespace saan_market.Controllers
 {
     public class ProductController : Controller
     {
+        [HttpPost]
         public ActionResult DefineProduct()
         {
             return View();
