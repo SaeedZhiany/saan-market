@@ -26,11 +26,12 @@ namespace saan_market.Controllers
                         ModelState.AddModelError("", "عکسی برای محصول انتخاب نمایید.");
                         return RedirectToAction("DefineProduct", "Product");
                     }
+                    product.paths = new List<string>();
                     foreach (HttpPostedFileBase image in images)
                     {
                         if (image != null && image.ContentLength > 0)
                         {
-                            var path = Path.Combine(Server.MapPath(@"~/Content/images/productImages/"), image.FileName);
+                            string path = Path.Combine(Server.MapPath(@"~/Content/images/productImages/"), image.FileName);
                             image.SaveAs(path);
                             product.paths.Add(path);
                         }

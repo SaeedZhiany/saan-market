@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="17e6d0050fb54b619fd732bf7bb5346a" Name="Diagram1">
-        <EntityTypeShape EntityType="SaanMarketDatabaseModel.Cart" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SaanMarketDatabaseModel.Product" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SaanMarketDatabaseModel.User" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SaanMarketDatabaseModel.Picture" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <AssociationConnector Association="SaanMarketDatabaseModel.ADD_to" ManuallyRouted="false" />
-        <AssociationConnector Association="SaanMarketDatabaseModel.added_to" ManuallyRouted="false" />
-        <AssociationConnector Association="SaanMarketDatabaseModel.have" ManuallyRouted="false" />
+      <Diagram DiagramId="dc1bb1db76334aa599334cf68f63881a" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel.Cart" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Picture" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Product" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.ADD_to" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.added_to" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.have" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

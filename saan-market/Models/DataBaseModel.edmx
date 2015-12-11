@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SaanMarketDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="userid" />
@@ -14,15 +14,13 @@
           <Property Name="productid" Type="int" Nullable="false" />
           <Property Name="orderedCount" Type="smallint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\SAAN-MARKET\SAAN-MARKET\APP_DATA\SAANMARKETDATABASE.MDF.dbo.Picture' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Picture">
           <Key>
-            <PropertyRef Name="path" />
-            <PropertyRef Name="Productid" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="path" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Productid" Type="int" Nullable="false" />
+          <Property Name="path" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -93,16 +91,11 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SaanMarketDatabaseModelStoreContainer">
+        <EntityContainer Name="DatabaseModelStoreContainer">
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Picture" EntityType="Self.Picture" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Picture].[path] AS [path], 
-    [Picture].[Productid] AS [Productid]
-    FROM [dbo].[Picture] AS [Picture]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="ADD to" Association="Self.ADD to">
             <End Role="User" EntitySet="User" />
             <End Role="Cart" EntitySet="Cart" />
@@ -120,7 +113,7 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SaanMarketDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="userid" />
@@ -131,6 +124,15 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
           <Property Name="orderedCount" Type="Int16" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.ADD_to" FromRole="Cart" ToRole="User" />
           <NavigationProperty Name="Product" Relationship="Self.added_to" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Productid" Type="Int32" Nullable="false" />
+          <Property Name="path" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.have" FromRole="Picture" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -167,15 +169,6 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
           <Property Name="plaque" Type="Int16" />
           <Property Name="floor" Type="Int16" />
           <NavigationProperty Name="Carts" Relationship="Self.ADD_to" FromRole="User" ToRole="Cart" />
-        </EntityType>
-        <EntityType Name="Picture">
-          <Key>
-            <PropertyRef Name="path" />
-            <PropertyRef Name="Productid" />
-          </Key>
-          <Property Name="path" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Productid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.have" FromRole="Picture" ToRole="Product" />
         </EntityType>
         <Association Name="ADD_to">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -215,9 +208,9 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
         </Association>
         <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Pictures" EntityType="Self.Picture" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Pictures" EntityType="Self.Picture" />
           <AssociationSet Name="ADD_to" Association="Self.ADD_to">
             <End Role="User" EntitySet="Users" />
             <End Role="Cart" EntitySet="Carts" />
@@ -236,9 +229,9 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SaanMarketDatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
           <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.Cart">
+            <EntityTypeMapping TypeName="DatabaseModel.Cart">
               <MappingFragment StoreEntitySet="Cart">
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="productid" ColumnName="productid" />
@@ -246,8 +239,17 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="DatabaseModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Productid" ColumnName="Productid" />
+                <ScalarProperty Name="path" ColumnName="path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.Product">
+            <EntityTypeMapping TypeName="DatabaseModel.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -261,7 +263,7 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.User">
+            <EntityTypeMapping TypeName="DatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -278,14 +280,6 @@ warning 6002: The table/view 'C:\USERS\SAEED\DOCUMENTS\VISUAL STUDIO 2015\PROJEC
                 <ScalarProperty Name="street" ColumnName="street" />
                 <ScalarProperty Name="plaque" ColumnName="plaque" />
                 <ScalarProperty Name="floor" ColumnName="floor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pictures">
-            <EntityTypeMapping TypeName="SaanMarketDatabaseModel.Picture">
-              <MappingFragment StoreEntitySet="Picture">
-                <ScalarProperty Name="path" ColumnName="path" />
-                <ScalarProperty Name="Productid" ColumnName="Productid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

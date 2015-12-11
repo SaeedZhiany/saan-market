@@ -31,7 +31,7 @@ namespace saan_market.Models
         public const int TABLET = 2;
         
         
-        public ICollection<string> paths { get; set; }
+        public List<string> paths { get; set; }
 
         public bool addProduct()
         {
@@ -54,9 +54,18 @@ namespace saan_market.Models
                         pic.Product = product;
                         product.Pictures.Add(pic);
                     }
-                        
                     context.Products.Add(product);
-                    context.SaveChanges();
+                    int curId = context.SaveChanges();
+
+                    /*foreach (string path in paths)
+                    {
+                        Picture pic = new Picture();
+                        pic.Productid = curId;
+                        pic.path = path;
+                        pic.Product = product;
+                        context.Pictures.Add(pic);
+                        context.SaveChanges();
+                    }*/
                     return true;
                 }
 

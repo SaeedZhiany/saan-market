@@ -14,8 +14,9 @@ namespace saan_market.Models
     
     public partial class Picture
     {
-        public string path { get; set; }
+        public int id { get; set; }
         public int Productid { get; set; }
+        public string path { get; set; }
     
         public virtual Product Product { get; set; }
     }

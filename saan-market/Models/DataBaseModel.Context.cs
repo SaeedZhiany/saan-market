@@ -26,8 +26,8 @@ namespace saan_market.Models
         }
     
         public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Picture> Pictures { get; set; }
     }
 }
