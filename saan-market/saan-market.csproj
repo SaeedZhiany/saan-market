@@ -877,6 +877,7 @@
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\saan-market.pubxml" />
+    <Content Include="Views\Accounting\Adminstrator.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -886,7 +887,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />
-    <Folder Include="Views\Accounting\" />
     <Folder Include="Views\Buy\" />
   </ItemGroup>
   <ItemGroup>

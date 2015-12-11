@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ورود مدیر سایت";
+    Layout = "~/Views/Shared/_NoHeaderFooterLayout.cshtml";
+}
+
+<!--  = Login =  -->
+<div id="loginModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <h3 id="loginModalLabel"><span class="light">ورود</span> به صفحه مدیریت سایت</h3>
+    </div>
+    <div class="modal-body">
+        @using (Html.BeginForm("Adminstrator", "Accounting", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger in fade" })
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputEmail">نام کاربری</label>
+                <div class="controls">
+                    <input type="text" name="username" class="input-block-level" id="inputEmail" placeholder="Username">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label hidden shown-ie8" for="inputPassword">رمز عبور</label>
+                <div class="controls">
+                    <input type="password" name="password" class="input-block-level" id="inputPassword" placeholder="Password">
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary input-block-level bold higher" value="ورود">
+
+        }
+    </div>
+</div>
+
