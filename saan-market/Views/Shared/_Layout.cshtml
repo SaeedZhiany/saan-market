@@ -159,7 +159,8 @@
                                     @using (Html.BeginForm("ResultProduct", "Search", FormMethod.Get))
                                     {
                                             <button type="submit"><span class="icon-search"></span></button>
-                                            @Html.TextBox("SearchString");
+                                            @Html.TextBoxFor(tuple => tuple.Item2, "SearchString")
+//                                           @Html.TextBox("SearchString");
                                       
                                     }
                                 </div>
