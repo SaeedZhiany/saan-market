@@ -9,6 +9,7 @@ namespace saan_market.Controllers
 {
     public class SearchController : Controller
     {
+//        public string displayString { get; set; }
         // GET: Search
         public ActionResult Index()
         {
@@ -29,7 +30,12 @@ namespace saan_market.Controllers
                     if (!String.IsNullOrEmpty(searchString))
                     {
                         productList = productList.Where(s => s.name.Contains(searchString));
+                    ViewData["searchString"] = searchString;
                     }
+                    else
+                {
+                    ViewData["searchString"] = "Empty";
+                }
 
                 return View(productList.ToList());
             }

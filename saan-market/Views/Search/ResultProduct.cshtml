@@ -93,7 +93,9 @@
                 <div class="underlined push-down-20">
                     <div class="row">
                         <div class="span5">
-                            <h3><span class="light">جستجو:</span> &quot;Horsefeathers&quot;</h3>
+                            <span class="light">جستجو:</span>
+
+                            <h3> @Html.Encode(ViewData["searchString"])</h3>
                         </div>
                         <div class="span4">
                             <div class="form-inline sorting-by">
@@ -116,10 +118,50 @@
                 <div class="row popup-products">
                     <div id="isotopeContainer" class="isotope-container">
 
+                        @model List<saan_market.Models.Product>
+                        @foreach (var item in Model)
+                        {
 
-                            
+                            <!--  ==========  -->
+                            <!--  = Single Product =  -->
+                            <!--  ==========  -->
+                            <div class="span3 filter--trousers" data-price="1087" data-popularity="4" data-size="xs|s|l|xl" data-color="pink|orange" data-brand="naish">
+                                <div class="product">
+                                    <div class="product-img">
+                                        <div class="picture">
+                                            <!--        <img width="540" height="374" alt="" src="images/dummy/products/product-3.jpg" /> -->
+                                            <img width="540" height="374" src="@Url.Content("~/Content/images/dummy/products/product-6.jpg" )" alt="Image" />
+                                            <div class="img-overlay">
+                                                <a class="btn more btn-primary" href="#">توضیحات بیشتر</a>
+                                                <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="main-titles no-margin">
+                                        <div class="title">
+                                            <h4>@Html.DisplayFor(m => item.price)</h4>
+                                        </div>
+                                        <div class="no-margin isotope--title">
+                                            <h5>@Html.DisplayFor(m => item.name)</h5>
 
-                    </div>
+                                        </div>
+                                    </div>
+                                    <p class="center-align stars">
+                                        <span class="icon-star stars-clr"></span>
+                                        <span class="icon-star stars-clr"></span>
+                                        <span class="icon-star stars-clr"></span>
+                                        <span class="icon-star stars-clr"></span>
+                                        <span class="icon-star stars-clr"></span>
+
+                                    </p>
+                                </div> <!-- /single product -->
+                                <br />
+                                <br />
+                                </div>
+                                }
+
+
+                            </div>
                 </div>
                 <hr />
             </section> <!-- /main content -->
