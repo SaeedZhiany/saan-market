@@ -75,7 +75,7 @@ namespace saan_market.Controllers
                 {
 
                 }
-                return View();
+                return View(context.Products.ToList());
 
             }
         }

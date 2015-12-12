@@ -3,8 +3,9 @@
     ViewBag.Title = "DisplayProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!--  ==========  -->
+<br />
+<br />
+ <!--  ==========  -->
 <!--  = Main container =  -->
 <!--  ==========  -->
 <div class="container">
@@ -21,17 +22,19 @@
             <div class="span5">
                 <div class="product-preview">
                     <div class="picture">
-                        <img src="images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" id="mainPreviewImg" />
+                        <img width="540" height="374" src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="Image" />
+
+                        <img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" id="mainPreviewImg" />
                     </div>
                     <div class="thumbs clearfix">
                         <div class="thumb active">
-                            <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" /></a>
+                            <a href="#mainPreviewImg"><img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" /></a>
                         </div>
                         <div class="thumb">
-                            <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-2.jpg" alt="" width="940" height="940" /></a>
+                            <a href="#mainPreviewImg"><img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" /></a>
                         </div>
                         <div class="thumb">
-                            <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                            <a href="#mainPreviewImg"><img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" /></a>
                         </div>
                     </div>
                 </div>
@@ -41,113 +44,234 @@
             <!--  = Title and short desc =  -->
             <!--  ==========  -->
             @model List<saan_market.Models.Product>
-            @foreach (var item in Model)
-            {
-
-                <div class="span7">
-                    <div class="product-title">
-                        <div class="name">
-                            <span class="light">
-                            </span>
-                            <h1>
-                                @Html.DisplayFor(m => item.name)
-                            </h1>
 
 
-                        </div>
-                        <div class="meta">
-                            <span class="tag">
-                            @Html.DisplayFor(m=> item.price)
-                            </span>
-                            <span class="stock">
-                                <span class="btn btn-success">موجود</span>
-                                <span class="btn btn-danger">اتمام موجودی</span>
-                                <span class="btn btn-warning">تماس بگیرید</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="product-description">
-                        @Html.DisplayFor(m => item.descriptionSummury)
+            <div class="span7">
+                <div class="product-title">
+                    <h1 class="name">
+                    <span class="light">
+                        @Html.DisplayFor(m => m.ElementAt(0).name)
 
+                        
+                        </span>
+                    
+                    </h1>
+                    <div class="meta">
+                        <span class="tag">
+                            @Html.DisplayFor(m => m.ElementAt(0).price)
 
-                        <hr />
-
-                        <!--  ==========  -->
-                        <!--  = Add to cart form =  -->
-                        <!--  ==========  -->
-                        <form action="#" class="form form-inline clearfix">
-                            <div class="numbered">
-                                <input type="text" name="num" value="1" class="tiny-size" />
-                                <span class="clickable add-one icon-plus-sign-alt"></span>
-                                <span class="clickable remove-one icon-minus-sign-alt"></span>
-                            </div>
-                            &nbsp;
-                            <select name="color" class="span2">
-                                <option value="-1">انتخاب رنگ</option>
-                                <option value="blue">آبی</option>
-                                <option value="orange">نارنجی</option>
-                                <option value="black">مشکی</option>
-                            </select>
-                            &nbsp;
-                            <button class="btn btn-danger pull-right" onclick="showingProduct()"><i class="icon-shopping-cart"></i> افزودن به سبد خرید</button>
-                        </form>
-
-                        <hr />
-
+                        </span>
+                        <span class="stock">
+                            <span class="btn btn-success">موجود</span>
+                            <span class="btn btn-danger">اتمام موجودی</span>
+                            <span class="btn btn-warning">تماس بگیرید</span>
+                        </span>
                     </div>
                 </div>
+                <div class="product-description">
+                    <p>
+
+                        @Html.DisplayFor(m => m.ElementAt(0).descriptionSummury)
+
+
+                    </p>
+                    <hr />
+
+                    <!--  ==========  -->
+                    <!--  = Add to cart form =  -->
+                    <!--  ==========  -->
+                    <form action="#" class="form form-inline clearfix">
+                        <div class="numbered">
+                            <input type="text" name="num" value="1" class="tiny-size" />
+                            <span class="clickable add-one icon-plus-sign-alt"></span>
+                            <span class="clickable remove-one icon-minus-sign-alt"></span>
+                        </div>
+                        &nbsp;
+                        <select name="color" class="span2">
+                            <option value="-1">انتخاب رنگ</option>
+                            <option value="blue">آبی</option>
+                            <option value="orange">نارنجی</option>
+                            <option value="black">مشکی</option>
+                        </select>
+                        &nbsp;
+                        <button class="btn btn-danger pull-right" onclick="showingProduct()"><i class="icon-shopping-cart"></i> افزودن به سبد خرید</button>
+                    </form>
+
+                    <hr />
+
+                </div>
             </div>
+        </div>
 
         <!--  ==========  -->
         <!--  = Tabs with more info =  -->
         <!--  ==========  -->
-                <div class="row">
-                    <div class="span12">
-                        <ul id="myTab" class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#tab-1" data-toggle="tab">جزئیات</a>
-                            </li>
-                            <li>
-                                <a href="#tab-2" data-toggle="tab">نظرات</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="fade in tab-pane active" id="tab-1">
-                                <h3>توضیحات محصول</h3>
-                                <p> @Html.DisplayFor(m=> item.technicalDescription)</p>
-                            </div>
-                            <div class="fade tab-pane" id="tab-2">
-                                <p>
-                                    لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود.
-                                </p>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="span12">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab-1" data-toggle="tab">جزئیات</a>
+                    </li>
+                    <li>
+                        <a href="#tab-2" data-toggle="tab">نظرات</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="fade in tab-pane active" id="tab-1">
+                        <h3>توضیحات محصول</h3>
+                  <p>
+                      @Html.DisplayFor(m => m.ElementAt(0).technicalDescription)
+
+
+                  </p>
+                      </div>
+                    <div class="fade tab-pane" id="tab-2">
+                        <p>
+                            لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div> <!-- /container -->
-                <!--  ==========  -->
-                <!--  = Related Products =  -->
-                <!--  ==========  -->
-                <div class="boxed-area no-bottom">
-                    <div class="container">
+        </div>
+    </div>
+</div> <!-- /container -->
+<!--  ==========  -->
+<!--  = Related Products =  -->
+<!--  ==========  -->
+<div class="boxed-area no-bottom">
+    <div class="container">
 
-                        <!--  ==========  -->
-                        <!--  = Title =  -->
-                        <!--  ==========  -->
-                        <div class="row">
-                            <div class="span12">
-                                <div class="main-titles lined">
-                                    <h2 class="title"><span class="light">محصولات</span> مرتبط</h2>
-                                </div>
+        <!--  ==========  -->
+        <!--  = Title =  -->
+        <!--  ==========  -->
+        <div class="row">
+            <div class="span12">
+                <div class="main-titles lined">
+                    <h2 class="title"><span class="light">محصولات</span> مرتبط</h2>
+                </div>
+            </div>
+        </div>
+
+        <!--  ==========  -->
+        <!--  = Related products =  -->
+        <!--  ==========  -->
+        <div class="row popup-products">
+
+
+            <!--  ==========  -->
+            <!--  = Products =  -->
+            <!--  ==========  -->
+            <div class="span3">
+                <div class="product">
+                    <div class="product-img">
+                        <div class="picture">
+                            <img src="images/dummy/products/product-1.jpg" alt="" width="540" height="374" />
+                            <div class="img-overlay">
+                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
                             </div>
                         </div>
-
-                        <!--  ==========  -->
-                        <!--  = Related products =  -->
-                        <!--  ==========  -->
-                    
-                    
                     </div>
+                    <div class="main-titles no-margin">
+                        <h4 class="title"><span class="striked">90000 تومان</span> <span class="red-clr">80000 تومان</span></h4>
+                        <h5 class="no-margin">آدیداس کانورس</h5>
+                    </div>
+                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
+                    <p class="center-align stars">
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star"></span>
+                    </p>
                 </div>
-            }
+            </div> <!-- /product -->
+            <!--  ==========  -->
+            <!--  = Products =  -->
+            <!--  ==========  -->
+            <div class="span3">
+                <div class="product">
+                    <div class="product-img">
+                        <div class="picture">
+                            <img src="images/dummy/products/product-2.jpg" alt="" width="540" height="374" />
+                            <div class="img-overlay">
+                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-titles no-margin">
+                        <h4 class="title"><span class="striked">70000 تومان</span> <span class="red-clr">30000 تومان</span></h4>
+                        <h5 class="no-margin">نایک دانک 552</h5>
+                    </div>
+                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
+                    <p class="center-align stars">
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star"></span>
+                    </p>
+                </div>
+            </div> <!-- /product -->
+            <!--  ==========  -->
+            <!--  = Products =  -->
+            <!--  ==========  -->
+            <div class="span3">
+                <div class="product">
+                    <div class="product-img">
+                        <div class="picture">
+                            <img src="images/dummy/products/product-3.jpg" alt="" width="540" height="374" />
+                            <div class="img-overlay">
+                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-titles no-margin">
+                        <h4 class="title"><span class="striked">45000 تومان</span> <span class="red-clr">35000 تومان</span></h4>
+                        <h5 class="no-margin">آل استار 552</h5>
+                    </div>
+                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
+                    <p class="center-align stars">
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star"></span>
+                    </p>
+                </div>
+            </div> <!-- /product -->
+            <!--  ==========  -->
+            <!--  = Products =  -->
+            <!--  ==========  -->
+            <div class="span3">
+                <div class="product">
+                    <div class="product-img">
+                        <div class="picture">
+                            <img src="images/dummy/products/product-4.jpg" alt="" width="540" height="374" />
+                            <div class="img-overlay">
+                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
+                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-titles no-margin">
+                        <h4 class="title"><span class="striked">10000 تومان</span> <span class="red-clr">5000 تومان</span></h4>
+                        <h5 class="no-margin">کاترپیلار 552</h5>
+                    </div>
+                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
+                    <p class="center-align stars">
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star stars-clr"></span>
+                        <span class="icon-star"></span>
+                    </p>
+                </div>
+            </div> <!-- /product -->
+
+
+        </div>
+    </div>
+</div>
