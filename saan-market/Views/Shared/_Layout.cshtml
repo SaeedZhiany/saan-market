@@ -105,10 +105,11 @@
                     <!--  = Logo =  -->
                     <!--  ==========  -->
                     <div class="span7">
-                        <a class="brand" href="index.html">
+                        <a class="brand">
                             <img src="~/Content/images/logo.png" alt="Webmarket Logo" width="48" height="48" />
                             <span class="pacifico">SAAN Market</span>
-                        </a>فروشگاه اینترنتی سان مارکت
+                        </a>
+                   <!--@Html.ActionLink("فروشگاه اینترنتی سان مارکت", "Index", "Home") --> 
                         <div id="usernameShow" style="display:none">
                             <a href="profile.html" role="button" data-toggle="modal">سعید ژیانی</a>
                         </div>
@@ -137,23 +138,31 @@
                             <div class="nav-collapse collapse">
                                 <ul class="nav" id="mainNavigation">
                                     <li class="dropdown ">
-                                        <a href="index.html"> خانه  </a>
-                                    </li>
+                                        @Html.ActionLink("خانه", "Index", "Home")       
+                                     </li>
                                     <li class="dropdown ">
                                         <a href="shop.html" class="dropdown-toggle"> فروشگاه </a>
                                     </li>
-                                    <li class="dropdown "><a href="about-us.html">درباره ما</a></li>
-                                    <li class="dropdown "><a href="contact.html">تماس با ما</a></li>
+                                    <li class="dropdown ">
+                                        @Html.ActionLink("درباره ما", "AboutUs", "Home")
+                                    </li>
+                                    <li class="dropdown ">
+                                        @Html.ActionLink("تماس", "Contact", "Home")
+                                     </li>
                                 </ul>
 
                                 <!--  ==========  -->
                                 <!--  = Search form =  -->
                                 <!--  ==========  -->
-                                <form class="navbar-form pull-right" action="#" method="get">
-                                    <button type="submit"><span class="icon-search"></span></button>
-                                    <input type="text" class="span1" name="search" id="navSearchInput">
-                                </form>
-                            </div><!-- /.nav-collapse -->
+
+                                <div class="navbar-form pull-right">
+                                    @using (Html.BeginForm("ResultProduct", "Search", FormMethod.Get))
+                                    {
+                                            <button type="submit"><span class="icon-search"></span></button>
+                                            @Html.TextBox("SearchString");
+                                    }
+                                </div>
+                                    </div><!-- /.nav-collapse -->
                         </div>
 
                         <!--  ==========  -->
