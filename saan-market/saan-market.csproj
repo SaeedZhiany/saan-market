@@ -718,6 +718,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\Picture.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>

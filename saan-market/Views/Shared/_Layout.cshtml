@@ -91,7 +91,7 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body class="">
-    @model Tuple<AccountingModel, ProductModel>
+    @model MainModel
     <div class="master-wrapper">
 
         <!--  ==========  -->
@@ -159,8 +159,7 @@
                                     @using (Html.BeginForm("ResultProduct", "Search", FormMethod.Get))
                                     {
                                             <button type="submit"><span class="icon-search"></span></button>
-                                            @Html.TextBoxFor(tuple => tuple.Item2, "SearchString")
-//                                           @Html.TextBox("SearchString");
+                                            @Html.TextBoxFor(m => m.searchString)
                                       
                                     }
                                 </div>
@@ -366,7 +365,7 @@
             </div>
 
             <!--  = Register =  -->
-            <div id="registerModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h3 id="registerModalLabel"><span class="light">عضویت</span> در سان مارکت </h3>
@@ -378,29 +377,29 @@
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputUsernameRegister">نام کاربری</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.Item1.userName, new { @class = "input-block-level", @id = "inputUsernameRegister", @placeholder = "Username" })
-                                @Html.ValidationMessageFor(m => m.Item1.userName)
+                                @Html.TextBoxFor(m => m.accModel.userName, new { @class = "input-block-level", @id = "inputUsernameRegister", @placeholder = "Username" })
+                                @Html.ValidationMessageFor(m => m.accModel.userName)
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputEmailRegister">ایمیل</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.Item1.email, new { @class = "input-block-level", @id = "inputEmailRegister", @placeholder = "Email" })
-                                @Html.ValidationMessageFor(m => m.Item1.email)
+                                @Html.TextBoxFor(m => m.accModel.email, new { @class = "input-block-level", @id = "inputEmailRegister", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.accModel.email)
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputPasswordRegister">رمز عبور</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.Item1.password, new { @class = "input-block-level", @id = "inputPasswordRegister", @placeholder = "Password" })
-                                @Html.ValidationMessageFor(m => m.Item1.password)
+                                @Html.TextBoxFor(m => m.accModel.password, new { @class = "input-block-level", @id = "inputPasswordRegister", @placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.accModel.password)
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputPasswordRegister">تکرار رمز عبور</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.Item1.confirmPassword, new { @class = "input-block-level", @id = "inputConfirmPasswordRegister", @placeholder = "ConfirmPassword" })
-                                @Html.ValidationMessageFor(m => m.Item1.confirmPassword)
+                                @Html.TextBoxFor(m => m.accModel.confirmPassword, new { @class = "input-block-level", @id = "inputConfirmPasswordRegister", @placeholder = "ConfirmPassword" })
+                                @Html.ValidationMessageFor(m => m.accModel.confirmPassword)
                             </div>
                         </div>
                         <input type="submit" class="btn btn-danger input-block-level bold higher" value="ثبت عضویت">

@@ -19,9 +19,10 @@ namespace saan_market.Controllers
         {
             return View();
         }*/
-        public ActionResult ResultProduct(string searchString)
+        
+        public ActionResult ResultProduct(MainModel model)
         {
-
+            string searchString = model.searchString;
                 using (DatabaseEntities context = new DatabaseEntities())
                 {
                     var productList = from s in context.Products
