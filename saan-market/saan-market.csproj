@@ -878,7 +878,6 @@
     </Content>
     <None Include="Properties\PublishProfiles\saan-market.pubxml" />
     <Content Include="Views\Accounting\Adminstrator.cshtml" />
-    <Content Include="Views\Accounting\Register.cshtml" />
     <Content Include="Views\Search\ResultProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
