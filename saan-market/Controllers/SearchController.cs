@@ -1,8 +1,6 @@
 ﻿using saan_market.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace saan_market.Controllers
@@ -20,20 +18,19 @@ namespace saan_market.Controllers
             return View();
         }*/
         
-        public ActionResult ResultProduct(MainModel model)
+        public ActionResult ResultProduct(string searchString)
         {
-            string searchString = model.searchString;
-                using (DatabaseEntities context = new DatabaseEntities())
-                {
-                    var productList = from s in context.Products
-                                   select s;
+            using (DatabaseEntities context = new DatabaseEntities())
+            {
+                var productList = from s in context.Products
+                                select s;
 
-                    if (!String.IsNullOrEmpty(searchString))
-                    {
-                        productList = productList.Where(s => s.name.Contains(searchString));
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    productList = productList.Where(s => s.name.Contains(searchString));
                     ViewData["searchString"] = searchString;
-                    }
-                    else
+                }
+                else
                 {
                     ViewData["searchString"] = "Empty";
                 }
