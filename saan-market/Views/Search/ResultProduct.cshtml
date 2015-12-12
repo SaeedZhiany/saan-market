@@ -130,7 +130,7 @@
                                     <div class="product-img">
                                         <div class="picture">
                                             <!--        <img width="540" height="374" alt="" src="images/dummy/products/product-3.jpg" /> -->
-                                            <img width="540" height="374" src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="Image" />
+                                            <img width="540" height="374" src="@Url.Content(item.Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/") )" alt="Image" />
                                             <div class="img-overlay">
                                                 <a class="btn more btn-primary" href="#">توضیحات بیشتر</a>
                                                 <a class="btn buy btn-danger">

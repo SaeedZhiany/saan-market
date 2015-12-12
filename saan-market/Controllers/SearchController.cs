@@ -20,8 +20,8 @@ namespace saan_market.Controllers
         
         public ActionResult ResultProduct(string searchString)
         {
-            using (DatabaseEntities context = new DatabaseEntities())
-            {
+            DatabaseEntities context = new DatabaseEntities();
+            
                 var productList = from s in context.Products
                                 select s;
 
@@ -36,7 +36,7 @@ namespace saan_market.Controllers
                 }
 
                 return View(productList.ToList());
-            }
+            
         }
     }
 }
