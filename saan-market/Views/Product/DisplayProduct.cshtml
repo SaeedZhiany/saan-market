@@ -161,120 +161,41 @@
         <!--  ==========  -->
         <div class="row popup-products">
 
-
             <!--  ==========  -->
             <!--  = Products =  -->
             <!--  ==========  -->
-            <div class="span3">
-                <div class="product">
-                    <div class="product-img">
-                        <div class="picture">
-                            <img src="images/dummy/products/product-1.jpg" alt="" width="540" height="374" />
-                            <div class="img-overlay">
-                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
-                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
+            @for (int i = 1; i<Model.Count();i++)
+            {
+                var item = Model.ElementAt(i);
+                <div class="span3">
+                    <div class="product">
+                        <div class="product-img">
+                            <div class="picture">
+                                <img src="@Url.Content(item.Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/"))" alt="" width="540" height="374" />
+                                <div class="img-overlay">
+                                    @Html.ActionLink("توضیحات بیشتر", "DisplayProduct", "Product", new { productId = item.id }, new { @class = "btn more btn-primary" })
+                                    <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="main-titles no-margin">
-                        <h4 class="title"><span class="striked">90000 تومان</span> <span class="red-clr">80000 تومان</span></h4>
-                        <h5 class="no-margin">آدیداس کانورس</h5>
-                    </div>
-                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
-                    <p class="center-align stars">
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star"></span>
-                    </p>
-                </div>
-            </div> <!-- /product -->
-            <!--  ==========  -->
-            <!--  = Products =  -->
-            <!--  ==========  -->
-            <div class="span3">
-                <div class="product">
-                    <div class="product-img">
-                        <div class="picture">
-                            <img src="images/dummy/products/product-2.jpg" alt="" width="540" height="374" />
-                            <div class="img-overlay">
-                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
-                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
-                            </div>
+                        <div class="main-titles no-margin">
+                            <h4 class="title"><span class="striked">@Html.DisplayFor(m => item.price) تومان</span> <span class="red-clr">80000 تومان</span></h4>
+                            <h5 class="no-margin">@Html.DisplayFor(m => item.name)</h5>
                         </div>
+                        <p class="desc">@Html.DisplayFor(m => item.descriptionSummury)</p>
+                        <p class="center-align stars">
+                            <span class="icon-star stars-clr"></span>
+                            <span class="icon-star stars-clr"></span>
+                            <span class="icon-star stars-clr"></span>
+                            <span class="icon-star stars-clr"></span>
+                            <span class="icon-star"></span>
+                        </p>
                     </div>
-                    <div class="main-titles no-margin">
-                        <h4 class="title"><span class="striked">70000 تومان</span> <span class="red-clr">30000 تومان</span></h4>
-                        <h5 class="no-margin">نایک دانک 552</h5>
-                    </div>
-                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
-                    <p class="center-align stars">
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star"></span>
-                    </p>
                 </div>
-            </div> <!-- /product -->
-            <!--  ==========  -->
-            <!--  = Products =  -->
-            <!--  ==========  -->
-            <div class="span3">
-                <div class="product">
-                    <div class="product-img">
-                        <div class="picture">
-                            <img src="images/dummy/products/product-3.jpg" alt="" width="540" height="374" />
-                            <div class="img-overlay">
-                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
-                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-titles no-margin">
-                        <h4 class="title"><span class="striked">45000 تومان</span> <span class="red-clr">35000 تومان</span></h4>
-                        <h5 class="no-margin">آل استار 552</h5>
-                    </div>
-                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
-                    <p class="center-align stars">
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star"></span>
-                    </p>
-                </div>
-            </div> <!-- /product -->
-            <!--  ==========  -->
-            <!--  = Products =  -->
-            <!--  ==========  -->
-            <div class="span3">
-                <div class="product">
-                    <div class="product-img">
-                        <div class="picture">
-                            <img src="images/dummy/products/product-4.jpg" alt="" width="540" height="374" />
-                            <div class="img-overlay">
-                                <a href="#" class="btn more btn-primary">توضیحات بیشتر</a>
-                                <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="main-titles no-margin">
-                        <h4 class="title"><span class="striked">10000 تومان</span> <span class="red-clr">5000 تومان</span></h4>
-                        <h5 class="no-margin">کاترپیلار 552</h5>
-                    </div>
-                    <p class="desc">توضیحاتی که در مورد محصول لازم است را در اینجا مینویسید</p>
-                    <p class="center-align stars">
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star stars-clr"></span>
-                        <span class="icon-star"></span>
-                    </p>
-                </div>
-            </div> <!-- /product -->
-
+            }
+            
+            <!-- /product -->
+            
 
         </div>
     </div>
