@@ -90,9 +90,8 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
-@model AccountingModel
 <body class="">
-
+    @model Tuple<AccountingModel, ProductModel>
     <div class="master-wrapper">
 
         <!--  ==========  -->
@@ -156,10 +155,12 @@
                                 <!--  ==========  -->
 
                                 <div class="navbar-form pull-right">
+                                    
                                     @using (Html.BeginForm("ResultProduct", "Search", FormMethod.Get))
                                     {
                                             <button type="submit"><span class="icon-search"></span></button>
                                             @Html.TextBox("SearchString");
+                                      
                                     }
                                 </div>
                                     </div><!-- /.nav-collapse -->
@@ -376,29 +377,29 @@
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputUsernameRegister">نام کاربری</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.userName, new { @class = "input-block-level", @id = "inputUsernameRegister", @placeholder = "Username" })
-                                @Html.ValidationMessageFor(m => m.userName)
+                                @Html.TextBoxFor(m => m.Item1.userName, new { @class = "input-block-level", @id = "inputUsernameRegister", @placeholder = "Username" })
+                                @Html.ValidationMessageFor(m => m.Item1.userName)
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputEmailRegister">ایمیل</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.email, new { @class = "input-block-level", @id = "inputEmailRegister", @placeholder = "Email" })
-                                @Html.ValidationMessageFor(m => m.email)
+                                @Html.TextBoxFor(m => m.Item1.email, new { @class = "input-block-level", @id = "inputEmailRegister", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.Item1.email)
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputPasswordRegister">رمز عبور</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.password, new { @class = "input-block-level", @id = "inputPasswordRegister", @placeholder = "Password" })
-                                @Html.ValidationMessageFor(m => m.password)
+                                @Html.TextBoxFor(m => m.Item1.password, new { @class = "input-block-level", @id = "inputPasswordRegister", @placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Item1.password)
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label hidden shown-ie8" for="inputPasswordRegister">تکرار رمز عبور</label>
                             <div class="controls">
-                                @Html.TextBoxFor(m => m.confirmPassword, new { @class = "input-block-level", @id = "inputConfirmPasswordRegister", @placeholder = "ConfirmPassword" })
-                                @Html.ValidationMessageFor(m => m.confirmPassword)
+                                @Html.TextBoxFor(m => m.Item1.confirmPassword, new { @class = "input-block-level", @id = "inputConfirmPasswordRegister", @placeholder = "ConfirmPassword" })
+                                @Html.ValidationMessageFor(m => m.Item1.confirmPassword)
                             </div>
                         </div>
                         <input type="submit" class="btn btn-danger input-block-level bold higher" value="ثبت عضویت">

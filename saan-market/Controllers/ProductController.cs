@@ -1,4 +1,5 @@
-﻿using System;
+﻿using saan_market.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace saan_market.Controllers
 {
     public class ProductController : Controller
     {
-        
+
         public ActionResult DefineProduct()
         {
             return View();
@@ -22,7 +23,7 @@ namespace saan_market.Controllers
             {
                 try
                 {
-                    if(images.Count() == 0)
+                    if (images.Count() == 0)
                     {
                         ModelState.AddModelError("", "عکسی برای محصول انتخاب نمایید.");
                         return RedirectToAction("DefineProduct", "Product");
@@ -36,9 +37,9 @@ namespace saan_market.Controllers
                             image.SaveAs(path);
                             product.paths.Add(path);
                         }
-                        
+
                     }
-                        
+
                     if (product.addProduct())
                     {
                         return RedirectToAction("DefineProduct", "Product");
@@ -46,7 +47,7 @@ namespace saan_market.Controllers
                 }
                 catch (Exception e)
                 {
-                    if(e.Message.Equals(""))
+                    if (e.Message.Equals(""))
                         ModelState.AddModelError("", "خطا در ذخیره سازی محصول در پایگاه داده، لطفا دوباره امتحان کنید.");
                     else
                         ModelState.AddModelError("", e.Message.ToString());
@@ -56,6 +57,27 @@ namespace saan_market.Controllers
             ModelState.AddModelError("", "لطفا فیلدهای لازم را به درستی وارد کنید.");
             return View(product);
 
+        }
+
+        public ActionResult DisplayProduct(Models.ProductModel product, string name)
+        {
+            using (DatabaseEntities context = new DatabaseEntities())
+            {
+
+
+                if (!String.IsNullOrEmpty(name))
+                {
+                    var selectedProduct = context.Products.Where(s => s.name.Equals(name));
+
+                    return View(selectedProduct);
+                }
+                else
+                {
+
+                }
+                return View();
+
+            }
         }
     }
 }

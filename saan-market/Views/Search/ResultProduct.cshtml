@@ -133,7 +133,16 @@
                                             <img width="540" height="374" src="@Url.Content("~/Content/images/dummy/products/product-6.jpg" )" alt="Image" />
                                             <div class="img-overlay">
                                                 <a class="btn more btn-primary" href="#">توضیحات بیشتر</a>
-                                                <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
+                                                <a class="btn buy btn-danger">
+                                                
+@using (Html.BeginForm("DisplayProduct", "Product", FormMethod.Get))
+{
+//    @Html.ActionLink("اضافه به سبد خرید", "Contact", "Home")
+    @Html.DisplayFor(m => item.name, "اضافه به سبد خرید")
+}
+
+
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

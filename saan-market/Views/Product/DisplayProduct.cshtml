@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "DisplayProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--  ==========  -->
+<!--  = Main container =  -->
+<!--  ==========  -->
+<div class="container">
+    <div class="push-up top-equal blocks-spacer">
+
+        <!--  ==========  -->
+        <!--  = Product =  -->
+        <!--  ==========  -->
+        <div class="row blocks-spacer">
+
+            <!--  ==========  -->
+            <!--  = Preview Images =  -->
+            <!--  ==========  -->
+            <div class="span5">
+                <div class="product-preview">
+                    <div class="picture">
+                        <img src="images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" id="mainPreviewImg" />
+                    </div>
+                    <div class="thumbs clearfix">
+                        <div class="thumb active">
+                            <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-1.jpg" alt="" width="940" height="940" /></a>
+                        </div>
+                        <div class="thumb">
+                            <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-2.jpg" alt="" width="940" height="940" /></a>
+                        </div>
+                        <div class="thumb">
+                            <a href="#mainPreviewImg"><img src="images/dummy/products/shirt-3.jpg" alt="" width="940" height="940" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  ==========  -->
+            <!--  = Title and short desc =  -->
+            <!--  ==========  -->
+            @model List<saan_market.Models.Product>
+            @foreach (var item in Model)
+            {
+
+                <div class="span7">
+                    <div class="product-title">
+                        <div class="name">
+                            <span class="light">
+                            </span>
+                            <h1>
+                                @Html.DisplayFor(m => item.name)
+                            </h1>
+
+
+                        </div>
+                        <div class="meta">
+                            <span class="tag">
+                            @Html.DisplayFor(m=> item.price)
+                            </span>
+                            <span class="stock">
+                                <span class="btn btn-success">موجود</span>
+                                <span class="btn btn-danger">اتمام موجودی</span>
+                                <span class="btn btn-warning">تماس بگیرید</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="product-description">
+                        @Html.DisplayFor(m => item.descriptionSummury)
+
+
+                        <hr />
+
+                        <!--  ==========  -->
+                        <!--  = Add to cart form =  -->
+                        <!--  ==========  -->
+                        <form action="#" class="form form-inline clearfix">
+                            <div class="numbered">
+                                <input type="text" name="num" value="1" class="tiny-size" />
+                                <span class="clickable add-one icon-plus-sign-alt"></span>
+                                <span class="clickable remove-one icon-minus-sign-alt"></span>
+                            </div>
+                            &nbsp;
+                            <select name="color" class="span2">
+                                <option value="-1">انتخاب رنگ</option>
+                                <option value="blue">آبی</option>
+                                <option value="orange">نارنجی</option>
+                                <option value="black">مشکی</option>
+                            </select>
+                            &nbsp;
+                            <button class="btn btn-danger pull-right" onclick="showingProduct()"><i class="icon-shopping-cart"></i> افزودن به سبد خرید</button>
+                        </form>
+
+                        <hr />
+
+                    </div>
+                </div>
+            </div>
+
+        <!--  ==========  -->
+        <!--  = Tabs with more info =  -->
+        <!--  ==========  -->
+                <div class="row">
+                    <div class="span12">
+                        <ul id="myTab" class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab-1" data-toggle="tab">جزئیات</a>
+                            </li>
+                            <li>
+                                <a href="#tab-2" data-toggle="tab">نظرات</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="fade in tab-pane active" id="tab-1">
+                                <h3>توضیحات محصول</h3>
+                                <p> @Html.DisplayFor(m=> item.technicalDescription)</p>
+                            </div>
+                            <div class="fade tab-pane" id="tab-2">
+                                <p>
+                                    لورم ایپسوم متنی است که ساختگی برای طراحی و چاپ آن مورد است. صنعت چاپ زمانی لازم بود شرایطی شما باید فکر ثبت نام و طراحی، لازمه خروج می باشد. در ضمن قاعده همفکری ها جوابگوی سئوالات زیاد شاید باشد، آنچنان که لازم بود طراحی گرافیکی خوب بود. کتابهای زیادی شرایط سخت ، دشوار و کمی در سالهای دور لازم است. هدف از این نسخه فرهنگ پس از آن و دستاوردهای خوب شاید باشد. حروفچینی لازم در شرایط فعلی لازمه تکنولوژی بود که گذشته، حال و آینده را شامل گردد. سی و پنج درصد از طراحان در قرن پانزدهم میبایست پرینتر در ستون و سطر حروف لازم است، بلکه شناخت این ابزار گاه اساسا بدون هدف بود و سئوالهای زیادی در گذشته بوجود می آید، تنها لازمه آن بود.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /container -->
+                <!--  ==========  -->
+                <!--  = Related Products =  -->
+                <!--  ==========  -->
+                <div class="boxed-area no-bottom">
+                    <div class="container">
+
+                        <!--  ==========  -->
+                        <!--  = Title =  -->
+                        <!--  ==========  -->
+                        <div class="row">
+                            <div class="span12">
+                                <div class="main-titles lined">
+                                    <h2 class="title"><span class="light">محصولات</span> مرتبط</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--  ==========  -->
+                        <!--  = Related products =  -->
+                        <!--  ==========  -->
+                    
+                    
+                    </div>
+                </div>
+            }
