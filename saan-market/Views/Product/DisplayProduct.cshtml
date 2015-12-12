@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "DisplayProduct";
+    ViewBag.Title = "نمایش محصول";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model List<saan_market.Models.Product>
 <br />
 <br />
  <!--  ==========  -->
@@ -22,19 +23,17 @@
             <div class="span5">
                 <div class="product-preview">
                     <div class="picture">
-                        <img width="540" height="374" src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="Image" />
-
-                        <img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" id="mainPreviewImg" />
+                        <img src="@Url.Content(Model.ElementAt(0).Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/"))" alt="" width="940" height="940" id="mainPreviewImg" />
                     </div>
                     <div class="thumbs clearfix">
                         <div class="thumb active">
-                            <a href="#mainPreviewImg"><img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" /></a>
+                            <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
                         </div>
                         <div class="thumb">
-                            <a href="#mainPreviewImg"><img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" /></a>
+                            <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(1).Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
                         </div>
                         <div class="thumb">
-                            <a href="#mainPreviewImg"><img src="@Url.Content("~/Content/images/dummy/products/product-6.jpg")" alt="" width="940" height="940" /></a>
+                            <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(2).Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +42,7 @@
             <!--  ==========  -->
             <!--  = Title and short desc =  -->
             <!--  ==========  -->
-            @model List<saan_market.Models.Product>
+            
 
 
             <div class="span7">
@@ -62,9 +61,15 @@
 
                         </span>
                         <span class="stock">
-                            <span class="btn btn-success">موجود</span>
-                            <span class="btn btn-danger">اتمام موجودی</span>
-                            <span class="btn btn-warning">تماس بگیرید</span>
+                            @if (Model.ElementAt(0).available > 0)
+                            {
+                                <span class="btn btn-success">موجود</span>
+                            }
+                            else
+                            {
+                                <span class="btn btn-danger">اتمام موجودی</span>
+                                <span class="btn btn-warning">تماس بگیرید</span>
+                            }
                         </span>
                     </div>
                 </div>
@@ -72,7 +77,6 @@
                     <p>
 
                         @Html.DisplayFor(m => m.ElementAt(0).descriptionSummury)
-
 
                     </p>
                     <hr />

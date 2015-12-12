@@ -61,18 +61,26 @@ namespace saan_market.Controllers
 
         public ActionResult DisplayProduct(int productId)
         {
-            using (DatabaseEntities context = new DatabaseEntities())
-            {
+            DatabaseEntities context = new DatabaseEntities();
+            
+                List<Product> products = new List<Product>();
                 Product selectedProduct = (from pro in context.Products
                                        where pro.id == productId
                                        select pro).First();
+                products.Add(selectedProduct);
+
+                var relativeProducts = (from pro in context.Products
+                                        where pro.id == productId
+                                        select pro);
+                foreach (Product p in relativeProducts)
+                    products.Add(p);
                 //context.Products.Where(s => s.id == productId).First();
 
-                return View(selectedProduct);
+                return View(products);
                 
             //    return View(context.Products.ToList());
 
-            }
+            
         }
     }
 }
