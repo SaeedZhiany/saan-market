@@ -10,6 +10,23 @@ namespace saan_market.Controllers
 {
     public class AccountingController : Controller
     {
+        public ActionResult LogIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LogIn(LogInModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.logIn();
+                return RedirectToAction("Index", "Home");
+                
+            }
+            ModelState.AddModelError("", "نام کاربری یا رمز عبور اشتباه است.");
+            return View();
+        }
 
         public ActionResult Register()
         {
@@ -17,7 +34,7 @@ namespace saan_market.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(AccountingModel model)
+        public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {

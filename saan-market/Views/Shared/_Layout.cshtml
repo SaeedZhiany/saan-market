@@ -113,7 +113,7 @@
                             <a href="profile.html" role="button" data-toggle="modal">سعید ژیانی</a>
                         </div>
                         <div id="loginOrRegister" class="register">
-                            <a href="#loginModal" role="button" data-toggle="modal">ورود</a> یا
+                            @Html.ActionLink("ورود", "LogIn", "Accounting") یا
                             @Html.ActionLink("ثبت نام", "Register", "Accounting")
                         </div>
                         <br>
@@ -326,44 +326,7 @@
             <!--  ==========  -->
             <!--  = Modal Windows =  -->
             <!--  ==========  -->
-            <!--  = Login =  -->
-            <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="loginModalLabel"><span class="light">ورود</span> به سان مارکت</h3>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="#">
-                        <div class="control-group">
-                            <label class="control-label hidden shown-ie8" for="inputEmail">نام کاربری</label>
-                            <div class="controls">
-                                <input type="text" class="input-block-level" id="inputEmail" placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label hidden shown-ie8" for="inputPassword">رمز عبور</label>
-                            <div class="controls">
-                                <input type="password" class="input-block-level" id="inputPassword" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="controls">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    مرا به خاطر بسپار
-                                </label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary input-block-level bold higher" onclick="submitLogIn()">
-                            ورود
-                        </button>
-                    </form>
-                    <p class="center-align push-down-0">
-                        <a href="#" data-dismiss="modal">رمز عبورتان را فراموش کرده اید؟</a>
-                    </p>
-                </div>
-            </div>
-
+            
         </div>
     </div> <!-- end of master-wrapper -->
 </body>

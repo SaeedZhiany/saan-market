@@ -718,7 +718,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\MainModel.cs" />
+    <Compile Include="Models\LogInModel.cs" />
     <Compile Include="Models\Picture.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
@@ -726,7 +726,7 @@
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Models\AccountingModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
@@ -881,6 +881,8 @@
     <Content Include="Views\Accounting\Adminstrator.cshtml" />
     <Content Include="Views\Search\ResultProduct.cshtml" />
     <Content Include="Views\Product\DisplayProduct.cshtml" />
+    <Content Include="Views\Accounting\Register.cshtml" />
+    <Content Include="Views\Accounting\LogIn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
