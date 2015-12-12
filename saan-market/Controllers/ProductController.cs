@@ -70,7 +70,7 @@ namespace saan_market.Controllers
                 products.Add(selectedProduct);
 
                 var relativeProducts = (from pro in context.Products
-                                        where pro.id == productId
+                                        where (pro.kind == selectedProduct.kind) && (pro.id != selectedProduct.id)
                                         select pro);
                 foreach (Product p in relativeProducts)
                     products.Add(p);
