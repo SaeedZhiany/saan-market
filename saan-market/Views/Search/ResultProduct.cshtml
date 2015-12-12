@@ -132,16 +132,9 @@
                                             <!--        <img width="540" height="374" alt="" src="images/dummy/products/product-3.jpg" /> -->
                                             <img width="540" height="374" src="@Url.Content(item.Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/") )" alt="Image" />
                                             <div class="img-overlay">
-                                                <a class="btn more btn-primary" href="#">توضیحات بیشتر</a>
+                                                @Html.ActionLink("توضیحات بیشتر", "DisplayProduct", "Product", new { productId = item.id }, new { @class = "btn more btn-primary" })
                                                 <a class="btn buy btn-danger">
-                                                
-@using (Html.BeginForm("DisplayProduct", "Product", FormMethod.Get))
-{
-//    @Html.ActionLink("اضافه به سبد خرید", "Contact", "Home")
-    @Html.DisplayFor(m => item.name, "اضافه به سبد خرید")
-}
-
-
+                                                <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
                                                 </a>
                                             </div>
                                         </div>
