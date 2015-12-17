@@ -82,5 +82,14 @@ namespace saan_market.Controllers
 
             
         }
+        public ActionResult ShopView()
+        {
+            DatabaseEntities context = new DatabaseEntities();
+
+            var productList = from s in context.Products
+                              select s;
+            return View(productList.ToList());
+
+        }
     }
 }

@@ -888,6 +888,7 @@
     <Content Include="Views\Accounting\Register.cshtml" />
     <Content Include="Views\Accounting\LogIn.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Product\ShopView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
