@@ -1,0 +1,46 @@
+﻿@using System
+@{
+    // 404 Not Found
+    //
+    // This view was added by NotFoundMVC
+    // For inspiration see: https://www.google.be/search?q=example+404+page
+    //
+    // The following properties are available in the ViewBag:
+    // ViewData["RequestedUrl"]
+    // ViewData["ReferrerUrl"]
+    //
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Title = "Page Not Found";
+}
+<br />
+<br />
+<div class="container">
+    <div class="push-up blocks-spacer">
+        <div class="row">
+
+            <!--  ==========  -->
+            <!--  = Main content =  -->
+            <!--  ==========  -->
+            <section class="span12">
+
+                <p class="container-404">
+                    <img src="~/Content/images/404.png" alt="404 Error" width="394" height="161" />
+
+                </p>
+
+                <hr />
+
+                <p class="center-align size-16">
+                    به نظر می آید مشکلی پیش آمده! صفحه ای که به دنبال آن میگردید در اینجا نیست.
+                </p>
+                <p class="center-align size-16 push-down-50">
+                    به صفحه
+                    @Html.ActionLink("خانه", "Index", "Home")
+                    باز گردید.
+                </p>
+
+            </section> <!-- /main content -->
+        </div>
+    </div>
+</div> <!-- /container -->
