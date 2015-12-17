@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "نمایش محصول";
     Layout = "~/Views/Shared/_Layout.cshtml";
-   
+
 }
 @model List<saan_market.Models.Product>
 <br />
@@ -24,19 +24,53 @@
             <div class="span5">
                 <div class="product-preview">
                     <div class="picture">
+@if (Model.ElementAt(0).Pictures.Count > 0)
+{
+
                         <img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(0).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/"))" alt="" width="940" height="940" id="mainPreviewImg" />
-                    </div>
+}
+else
+{
+    <img width="540" height="374" alt="" src="~/Content/images/404.png" />
+
+}
+                                        </div>
                    
                     <div class="thumbs clearfix">
                         <div class="thumb active">
+@if (Model.ElementAt(0).Pictures.Count > 0)
+{
                             <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(0).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
+}
+else
+{
+    <img width="540" height="374" alt="" src="~/Content/images/404.png" />
+
+}
                         </div>
                         <div class="thumb">
-                            <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(1).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
+ @if (Model.ElementAt(0).Pictures.Count > 0)
+ {
+                           <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(1).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
+ }
+ else
+ {
+    <img width="540" height="374" alt="" src="~/Content/images/404.png" />
+
+ }
                         </div>
                         <div class="thumb">
-                            <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(2).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
-                        </div>
+  @if (Model.ElementAt(0).Pictures.Count > 1)
+  {
+                          <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(2).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
+  }
+  else
+  {
+    <img width="540" height="374" alt="" src="~/Content/images/404.png" />
+
+  }
+
+                                                </div>
                     </div>
                 </div>
             </div>
@@ -166,14 +200,21 @@
             <!--  ==========  -->
             <!--  = Products =  -->
             <!--  ==========  -->
-            @for (int i = 0; i<Model.Count();i++)
+            @for (int i = 0; i < Model.Count(); i++)
             {
                 var item = Model.ElementAt(i);
                 <div class="span3">
                     <div class="product">
                         <div class="product-img">
                             <div class="picture">
+                                @if (item.Pictures.Count > 0)
+                                {
                                 <img src="@Url.Content(item.Pictures.First().path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/"))" alt="" width="540" height="374" />
+                                } else
+                                {
+                                <img width = "540" height = "374" alt = "" src = "~/Content/images/404.png" />
+
+                                }
                                 <div class="img-overlay">
                                     @Html.ActionLink("توضیحات بیشتر", "DisplayProduct", "Product", new { productId = item.id }, new { @class = "btn more btn-primary" })
                                     <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>

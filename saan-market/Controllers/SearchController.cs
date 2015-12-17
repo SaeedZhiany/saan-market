@@ -13,10 +13,6 @@ namespace saan_market.Controllers
         {
             return View();
         }
-/*        public ActionResult ResultProduct()
-        {
-            return View();
-        }*/
         
         public ActionResult ResultProduct(string searchString)
         {

@@ -57,15 +57,6 @@ namespace saan_market.Models
                     context.Products.Add(product);
                     int curId = context.SaveChanges();
 
-                    /*foreach (string path in paths)
-                    {
-                        Picture pic = new Picture();
-                        pic.Productid = curId;
-                        pic.path = path;
-                        pic.Product = product;
-                        context.Pictures.Add(pic);
-                        context.SaveChanges();
-                    }*/
                     return true;
                 }
 
