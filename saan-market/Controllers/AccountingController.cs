@@ -63,6 +63,10 @@ namespace saan_market.Controllers
             return View();
         }
 
+        public ActionResult ProfileView()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult Adminstrator(string username, string password)
         {
@@ -106,6 +110,8 @@ namespace saan_market.Controllers
             {
                 throw e;
             }
-        }
+
+     }
+
     }
 }

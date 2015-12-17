@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace saan_market.Controllers
 {
     public class BuyController : Controller
-    {
+    {/*
         public ActionResult checkOutStep1()
         {
             return View();
@@ -27,8 +27,8 @@ namespace saan_market.Controllers
         {
             return View();
         }
-
-        public ActionResult checkOutStepFactor()
+        */
+        public ActionResult factor()
         {
             return View();
         }

@@ -889,6 +889,8 @@
     <Content Include="Views\Accounting\LogIn.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Product\ShopView.cshtml" />
+    <Content Include="Views\Accounting\ProfileView.cshtml" />
+    <Content Include="Views\Buy\Factor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -898,7 +900,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />
-    <Folder Include="Views\Buy\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

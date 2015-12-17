@@ -1,4 +1,5 @@
-﻿using System;
+﻿using saan_market.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,11 @@ namespace saan_market.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            DatabaseEntities context = new DatabaseEntities();
+
+            var productList = from s in context.Products
+                              select s;
+            return View(productList.ToList());
         }
 
         public ActionResult AboutUs()
