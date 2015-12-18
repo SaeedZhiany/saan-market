@@ -109,13 +109,27 @@
                             <span class="pacifico">SAAN Market</span>
                         </a>
                    <!--@Html.ActionLink("فروشگاه اینترنتی سان مارکت", "Index", "Home") --> 
-                        <div id="usernameShow" style="display:none">
+                  <!--      <div id="usernameShow" style="display:none">
                             <a href="profile.html" role="button" data-toggle="modal">سعید ژیانی</a>
-                        </div>
+                        </div> -->
+                        @if (Session.Count==0 || Session["userID"] == null)
+                        {
                         <div id="loginOrRegister" class="register">
+                       
                             @Html.ActionLink("ورود", "LogIn", "Accounting") یا
                             @Html.ActionLink("ثبت نام", "Register", "Accounting")
                         </div>
+                        }
+                        else
+                        {
+                            <div id="loginOrRegister" class="logmein">
+                                خوش آمدید
+                                @Html.ActionLink( Session["userID"].ToString(), "ProfileView", "Accounting") 
+                                    -  
+                                @Html.ActionLink("خروج", "Logout", "Accounting")
+                                
+                            </div>
+                        }
                         <br>
                     </div>
                 </div>

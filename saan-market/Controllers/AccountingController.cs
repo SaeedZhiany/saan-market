@@ -10,17 +10,39 @@ namespace saan_market.Controllers
 {
     public class AccountingController : Controller
     {
+        public ActionResult Logout()
+        {
+            Session["userID"] = null;
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult LogIn()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult LogIn(LogInModel model)
         {
+            
+
             if (ModelState.IsValid)
             {
-                model.logIn();
+                Tuple<int, bool>  info= model.logIn();
+                if(info.Item2==true)
+                {
+                    ModelState.AddModelError("", "شما یک مدیر هستید. به صفحه ورود مدیر ارجاع داده می شوید .");
+                    return RedirectToAction("Administrator", "Accounting");
+                }
+
+                using (DatabaseEntities context = new DatabaseEntities())
+                {
+                    
+                        User selectedUser = (from acc in context.Users
+                                                   where acc.id == info.Item1
+                                                   select acc).First();
+                    Session["userID"]=selectedUser.username;
+
+                }
+
                 return RedirectToAction("Index", "Home");
                 
             }

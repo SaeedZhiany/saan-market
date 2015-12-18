@@ -307,7 +307,6 @@
     <Content Include="Content\assets\zocial\css\zocial-regular-webfont.svg" />
     <Content Include="Content\assets\zocial\css\zocial.css" />
     <Content Include="Content\assets\zocial\sample.html" />
-    <Content Include="Content\images\.gitignore" />
     <Content Include="Content\images\404.png" />
     <Content Include="Content\images\apple-touch\114.png" />
     <Content Include="Content\images\apple-touch\144.png" />
