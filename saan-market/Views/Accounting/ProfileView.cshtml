@@ -4,5 +4,119 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Profile</h2>
+<br />
+<br />
 
+<body>
+    <br />
+
+    <div>
+        <div class="alert alert-info">
+            <img src="images/profile.png">
+            <span class="">اطلاعات کاربر</span>
+        </div>
+    </div>
+
+    <div id="userInfo" class="alert alert-info">
+        <table>
+            <tbody>
+                <tr>
+                    <th>نام و نام خانوادگی :</th>
+                    <td>سعید ژیانی</td>
+                    <td colspan="2"></td>
+                    <th>کد ملی :</th>
+                    <td>0123456789</td>
+                </tr>
+                <tr>
+                    <th>آدرس الکترونیک :</th>
+                    <td>name@domain.com</td>
+                    <td colspan="2"></td>
+                    <th>تاریخ تولد :</th>
+                    <td>1372/12/20</td>
+                </tr>
+                <tr>
+                    <th>شماره تلفن همراه  :</th>
+                    <td>09331234567</td>
+                    <td colspan="2"></td>
+                    <th>شماره تلفن ثابت  :</th>
+                    <td>02112345678</td>
+                </tr>
+                <tr>
+                    <th>محل سکونت  :</th>
+                    <td>تهران</td>
+                </tr>
+
+                <tr>
+                    <td colspan="6">
+
+                        <img id="btnEdit" src="~/Content/images/edit.png" onclick="editInfoFunc()">
+                        <img src="~/Content/images/change-password.png" onclick="changePassFunc()">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form id="editPanel" class="alert alert-info" style="display:none">
+        <table>
+            <tbody>
+                <tr>
+                    <th>نام و نام خانوادگی :</th>
+                    <td><input type="text" value="سعید ژیانی"></td>
+                </tr>
+                <tr>
+                    <th>کد ملی :</th>
+                    <td><input type="text" value="0123456789"></td>
+                </tr>
+                <tr>
+                    <th>آدرس الکترونیک :</th>
+                    <td><input type="email" value="name@domain.com"></td>
+                </tr>
+                <tr>
+                    <th>تاریخ تولد :</th>
+                    <td><input type="date" value="1372/12/20"></td>
+                </tr>
+                <tr>
+                    <th>شماره تلفن همراه  :</th>
+                    <td><input type="text" value="09331234567"></td>
+                </tr>
+                <tr>
+                    <th>شماره تلفن ثابت  :</th>
+                    <td><input type="text" value="02112345678"></td>
+                </tr>
+                <tr>
+                    <th>محل سکونت  :</th>
+                    <td><input type="text" value="تهران"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary btn-large bold">ثبت</button>
+    </form>
+
+    <form id="changePass" class="alert alert-info" style="display:none">
+        <table>
+            <tbody>
+                <tr>
+                    <th>رمز جدید  :</th>
+                    <td><input type="password" value="1234567890"></td>
+                </tr>
+                <tr>
+                    <th>تکرار رمز  :</th>
+                    <td><input type="password" value="1234567890"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary btn-large bold">ثبت</button>
+    </form>
+
+    <script type="text/javascript">
+		function editInfoFunc(){
+			document.getElementById("editPanel").style.display = "";
+			document.getElementById("userInfo").style.display = "none";
+		}
+		function changePassFunc(){
+			document.getElementById("changePass").style.display = "";
+		}
+    </script>
+
+</body>
