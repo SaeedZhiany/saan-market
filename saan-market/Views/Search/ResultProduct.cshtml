@@ -140,9 +140,7 @@
                                             }
                                                 <div class="img-overlay">
                                                 @Html.ActionLink("توضیحات بیشتر", "DisplayProduct", "Product", new { productId = item.id }, new { @class = "btn more btn-primary" })
-                                                <a class="btn buy btn-danger">
-                                                <a class="btn buy btn-danger" href="#">اضافه به سبد خرید</a>
-                                                </a>
+                                                @Ajax.ActionLink("افزودن به سبد خرید", "AddToCart", "Product", new { productId = item.id, count = 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "CART", OnSuccess = "OnSuccess" }, new { @class = "btn buy btn-danger" })
                                             </div>
                                         </div>
                                     </div>

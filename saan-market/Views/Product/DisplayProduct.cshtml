@@ -120,6 +120,7 @@ else
                     <!--  ==========  -->
                     <!--  = Add to cart form =  -->
                     <!--  ==========  -->
+                    
                     <form action="#" class="form form-inline clearfix">
                         <div class="numbered">
                             <input type="text" name="num" value="1" class="tiny-size" />
@@ -134,7 +135,7 @@ else
                             <option value="black">مشکی</option>
                         </select>
                         &nbsp;
-                        <button class="btn btn-danger pull-right" onclick="showingProduct()"><i class="icon-shopping-cart"></i> افزودن به سبد خرید</button>
+                        @Ajax.ActionLink("افزودن به سبد خرید", "AddToCart", "Product", new { productId = Model.ElementAt(0).id, count = 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "CART", OnSuccess = "OnSuccess" }, new { @class = "btn btn - danger pull - right icon-shopping-cart", @onclick="showingProduct()" })
                     </form>
 
                     <hr />
@@ -217,7 +218,7 @@ else
                                 }
                                 <div class="img-overlay">
                                     @Html.ActionLink("توضیحات بیشتر", "DisplayProduct", "Product", new { productId = item.id }, new { @class = "btn more btn-primary" })
-                                    <a href="#" class="btn buy btn-danger">اضافه به سبد خرید</a>
+                                    @Ajax.ActionLink("افزودن به سبد خرید", "AddToCart", "Product", new { productId = item.id, count = 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "CART", OnSuccess = "OnSuccess" }, new { @class = "btn buy btn-danger" })
                                 </div>
                             </div>
                         </div>

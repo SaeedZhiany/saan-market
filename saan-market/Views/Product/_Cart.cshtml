@@ -1,0 +1,113 @@
+﻿@{
+    List<saan_market.Models.CartProductsModel> Model = (List<saan_market.Models.CartProductsModel>)ViewData["CartContent"];
+    if (Model == null)
+    {
+        Model = new List<saan_market.Models.CartProductsModel>();
+    }
+
+}
+<div class="span3" id="CART">
+    <div class="cart-container" id="cartContainer">
+        <div class="cart" id="cartDiv1">
+            <p class="items">سبد خرید <span class="dark-clr">(@Model.Count())</span></p>
+            @{
+                int totalValue = 0;
+                foreach (var item in Model)
+                {
+                    totalValue += (item.baseValue * item.count);
+                }
+                <p class="dark-clr hidden-tablet">@totalValue تومان</p>
+                int shippingCost = 0;
+                if (totalValue < 100000)
+                {
+                    shippingCost = (int)(totalValue * 0.1);
+                }
+            } 
+            <a href="checkout-step-1.html" class="btn btn-danger">
+                <!-- <span class="icon icons-cart"></span> -->
+                <i class="icon-shopping-cart"></i>
+            </a>
+        </div>
+        <div class="open-panel">
+            @foreach (var item in Model)
+            {
+                <div class="item-in-cart clearfix">
+                    <div class="image">
+                        <img src="@Url.Content(item.picturePath.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/"))" width="124" height="124" alt="cart item" />
+                    </div>
+                    <div class="desc">
+                        <strong><a href="product.html">@item.name</a></strong>
+                        <span class="light-clr qty">
+                            تعداد : @item.count
+                            &nbsp;
+                            @Ajax.ActionLink("حذف", "RemoveFromCart", "Product", new { productId = item.id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "CART", OnSuccess = "OnSuccess" })
+                        </span>
+                    </div>
+                    <div class="price">
+                        @{
+                            int curValue = item.count * item.baseValue;
+                            <strong>@curValue.ToString() تومان</strong>
+                        }
+                    </div>
+                </div>
+                            }
+            <div class="summary">
+                <div class="line">
+                    <div class="row-fluid">
+                        @{
+                            if (shippingCost == 0)
+                            {
+                                <div class="span6 align-right">رایگان</div>
+                            }
+                            else
+                            {
+                                
+                                <div class="span6 align-right">@shippingCost تومان</div>
+                            }
+                        }
+                        <div class="span6">هزینه ارسال :</div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="row-fluid">
+                        @{
+
+                            <div class="span6 align-right size-16">@totalValue تومان</div>
+                        }
+                        <div class="span6">جمع کل :</div>
+                    </div>
+                </div>
+            </div>
+            <div class="proceed">
+                <a href="checkout-step-1.html" class="btn btn-danger pull-right bold higher">تصویه حساب <i class="icon-shopping-cart"></i></a>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script>
+    function OnSuccess() {
+        //  ========== 
+        //  = Cart Container Effects = 
+        //  ========== 
+        $("#cartContainer").hover(function () {
+            $(this).children(".cart").addClass("opened");
+            $(this).children(".open-panel").stop(true, true).slideDown(150);
+        }, function () {
+            var $this = $(this);
+            setTimeout(function () {
+                $this.children(".cart").removeClass("opened");
+            }, 120);
+            $(this).children(".open-panel").stop(true, true).slideUp(150);
+        });
+        // delete item from the popover cart
+        $(".item-in-cart .icon-remove-sign").click(function () {
+            $(this).parents(".item-in-cart").animate({
+                opacity: 0
+            }, "swing", function () {
+                $(this).slideUp();
+            });
+            return false;
+        });
+    }
+</script>
