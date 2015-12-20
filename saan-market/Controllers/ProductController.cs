@@ -91,5 +91,54 @@ namespace saan_market.Controllers
             return View(productList.ToList());
 
         }
+
+        public PartialViewResult AddToCart(int productId, int count)
+        {
+            ViewData["CartContent"] = TempData["CartContent"];
+            List<CartProductsModel> list = (List<CartProductsModel>) ViewData["CartContent"];
+            if (list == null)
+                list = new List<CartProductsModel>();
+            foreach(CartProductsModel m in list)
+            {
+                if(m.id == productId)
+                {
+                    m.count += count;
+                    ViewData["CartContent"] = list;
+                    TempData["CartContent"] = ViewData["CartContent"];
+                    return PartialView("_cart");
+                }
+            }
+            using(DatabaseEntities context = new DatabaseEntities())
+            {
+                Product product = context.Products.Where(p => p.id == productId).First();
+                CartProductsModel addedProduct = new CartProductsModel();
+                addedProduct.id = product.id;
+                addedProduct.name = product.name;
+                addedProduct.baseValue = (int) product.price;
+                addedProduct.count = count;
+                addedProduct.picturePath = product.Pictures.First().path;
+                list.Add(addedProduct);
+            }
+            ViewData["CartContent"] = list;
+            TempData["CartContent"] = ViewData["CartContent"];
+            return PartialView("_Cart");
+        }
+
+        public PartialViewResult RemoveFromCart(int productId)
+        {
+            ViewData["CartContent"] = TempData["CartContent"];
+            List<CartProductsModel> list = (List<CartProductsModel>)ViewData["CartContent"];
+            foreach (CartProductsModel m in list)
+            {
+                if (m.id == productId)
+                {
+                    list.Remove(m);
+                    ViewData["CartContent"] = list;
+                    TempData["CartContent"] = ViewData["CartContent"];
+                    break;
+                }
+            }
+            return PartialView("_cart");
+        }
     }
 }
