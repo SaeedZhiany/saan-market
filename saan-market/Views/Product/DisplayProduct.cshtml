@@ -24,53 +24,50 @@
             <div class="span5">
                 <div class="product-preview">
                     <div class="picture">
-@if (Model.ElementAt(0).Pictures.Count > 0)
-{
+                        @if (Model.ElementAt(0).Pictures.Count > 0)
+                        {
+                            <img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(0).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/"))" alt="" width="940" height="940" id="mainPreviewImg" />
+                        }
+                        else
+                        {
+                            <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
 
-                        <img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(0).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/"))" alt="" width="940" height="940" id="mainPreviewImg" />
-}
-else
-{
-    <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
-
-}
-                                        </div>
+                        }
+                    </div>
                    
                     <div class="thumbs clearfix">
                         <div class="thumb active">
-@if (Model.ElementAt(0).Pictures.Count > 0)
-{
-                            <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(0).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
-}
-else
-{
-    <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
+                            @if (Model.ElementAt(0).Pictures.Count > 0)
+                            {
+                                <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(0).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
+                            }
+                            else
+                            {
+                                <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
 
-}
+                            }
                         </div>
                         <div class="thumb">
- @if (Model.ElementAt(0).Pictures.Count > 0)
- {
-                           <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(1).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
- }
- else
- {
-    <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
+                            @if (Model.ElementAt(0).Pictures.Count > 0)
+                            {
+                               <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(1).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
+                            }
+                            else
+                            {
+                            <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
 
- }
+                            }
                         </div>
                         <div class="thumb">
-  @if (Model.ElementAt(0).Pictures.Count > 1)
-  {
-                          <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(2).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
-  }
-  else
-  {
-    <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
-
-  }
-
-                                                </div>
+                            @if (Model.ElementAt(0).Pictures.Count > 1)
+                            {
+                                <a href="#mainPreviewImg"><img src="@Url.Content(Model.ElementAt(0).Pictures.ElementAt(2).path.Replace(Request.ServerVariables["APPL_PHYSICAL_PATH"], "~/").Replace(@"\", "/")))" alt="" width="940" height="940" /></a>
+                            }
+                            else
+                            {
+                                <img width="540" height="374" alt="" src="~/Content/images/placeholder.png" />
+                            }
+                            </div>
                     </div>
                 </div>
             </div>
@@ -135,7 +132,7 @@ else
                             <option value="black">مشکی</option>
                         </select>
                         &nbsp;
-                        @Ajax.ActionLink("افزودن به سبد خرید", "AddToCart", "Product", new { productId = Model.ElementAt(0).id, count = 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "CART", OnSuccess = "OnSuccess" }, new { @class = "btn btn - danger pull - right icon-shopping-cart", @onclick="showingProduct()" })
+                        @Ajax.ActionLink("افزودن به سبد خرید", "AddToCart", "Product", new { productId = Model.ElementAt(0).id, count = 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "CART", OnSuccess = "OnSuccess" }, new { @class = "btn btn - danger pull - right icon-shopping-cart"})
                     </form>
 
                     <hr />
