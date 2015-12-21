@@ -1,8 +1,120 @@
 ﻿
 @{
-    ViewBag.Title = "checkout_1";
+    ViewBag.Title = "تایید و پرداخت";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>checkout_1</h2>
+<br />
+<br />
+
+
+<div class="container">
+    <div class="row">
+
+        <!--  ==========  -->
+        <!--  = Main content =  -->
+        <!--  ==========  -->
+        <section class="span12">
+
+            <div class="checkout-container">
+                <div class="row">
+                    <div class="span10 offset1">
+
+                        <!--  ==========  -->
+                        <!--  = Header =  -->
+                        <!--  ========== 
+                        <header>
+                            <div class="row">
+                                <div class="span2">
+                                    <a href="index.html"><img src="images/logo-bw.png" alt="Webmarket Logo" width="48" height="48" /></a>
+                                </div>
+                                <div class="span6">
+                                    <div class="center-align">
+                                        <h1><span class="light">تاييد</span> و پرداخت</h1>
+                                    </div>
+                                </div>
+                                <div class="span2">
+                                    <div class="right-align">
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!--  ==========  -->
+                      
+
+                        <!--  = Steps =  -->
+                        <!--  ==========  -->
+                        <div class="checkout-steps">
+                            <div class="clearfix">
+                                <div class="step done">
+                                    <div class="step-badge"><i class="icon-ok"></i></div>
+                                      @Html.ActionLink("سبد خرید", "checkout_1", "Buy")
+                              </div>
+                                <div class="step done">
+                                    <div class="step-badge"><i class="icon-ok"></i></div>
+                                    @Html.ActionLink("آدرس ارسال", "checkout_2", "Buy")
+                                </div>
+                                <div class="step done">
+                                    <div class="step-badge"><i class="icon-ok"></i></div>
+                                    @Html.ActionLink("شیوه پرداخت", "checkout_3", "Buy")
+                                 </div>
+                                <div class="step active">
+                                    <div class="step-badge">4</div>
+                                    تاييد و پرداخت
+                                </div>
+                            </div>
+                        </div> <!-- /steps -->
+                        <!--  ==========  -->
+                        <!--  = Selected Items =  -->
+                        <!--  ==========  -->
+                        <table class="table table-items">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">آيتم</th>
+                                    <th><div class="align-center">تعداد</div></th>
+                                    <th><div class="align-right">قيمت</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td class="image"><img src="~/Content/images/placeholder.png" alt="" width="124" height="124" /></td>
+                                    <td class="desc">لباس ورزشي آديداس</td>
+                                    <td class="qty">
+                                        3
+                                    </td>
+                                    <td class="price">
+                                        $59
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" rowspan="2">
+                                        &nbsp;
+                                    </td>
+                                    <td class="stronger">هزينه ارسال :</td>
+                                    <td class="stronger"><div class="align-right">$4.99</div></td>
+                                </tr>
+                                <tr>
+                                    <td class="stronger">جمع کل :</td>
+                                    <td class="stronger"><div class="size-16 align-right">$357.81</div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="right-align">
+                            <div class="btn btn-primary higher bold">
+                                @Html.ActionLink("تایید و پرداخت", "Index", "Home")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section> <!-- /main content -->
+
+    </div>
+</div> <!-- /container -->
 
