@@ -898,6 +898,10 @@
     <Content Include="Views\Buy\Factor.cshtml" />
     <Content Include="Views\Product\_Cart.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Buy\checkout_1.cshtml" />
+    <Content Include="Views\Buy\checkout_2.cshtml" />
+    <Content Include="Views\Buy\checkout_4.cshtml" />
+    <Content Include="Views\Buy\checkout_3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
