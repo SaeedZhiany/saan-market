@@ -414,6 +414,17 @@
     <Content Include="Content\images\jagged-border-top.png" />
     <Content Include="Content\images\logo-bw.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\placeholder.png" />
+    <Content Include="Content\images\productImages\070fcd.jpg" />
+    <Content Include="Content\images\productImages\6d9ee1.jpg" />
+    <Content Include="Content\images\productImages\a3f37c.jpg" />
+    <Content Include="Content\images\productImages\b9e7f0.jpg" />
+    <Content Include="Content\images\productImages\Chrysanthemum.jpg" />
+    <Content Include="Content\images\productImages\Desert.jpg" />
+    <Content Include="Content\images\productImages\e128dd.jpg" />
+    <Content Include="Content\images\productImages\f47341.jpg" />
+    <Content Include="Content\images\productImages\Hydrangeas.jpg" />
+    <Content Include="Content\images\productImages\product-1.jpg" />
     <Content Include="Content\images\profile.png" />
     <Content Include="Content\images\shelf-ie8.png" />
     <Content Include="Content\images\shelf.png" />
@@ -685,12 +696,17 @@
       <DependentUpon>DataBaseModel.edmx</DependentUpon>
       <LastGenOutput>DataBaseModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\images\apple-touch\Thumbs.db" />
+    <Content Include="Content\images\backgrounds\Thumbs.db" />
+    <Content Include="Content\images\buttons\Thumbs.db" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -702,6 +718,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs">
       <DependentUpon>DataBaseModel.tt</DependentUpon>
     </Compile>
