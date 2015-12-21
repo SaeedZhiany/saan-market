@@ -32,5 +32,25 @@ namespace saan_market.Controllers
         {
             return View();
         }
+
+        public ActionResult checkout_1()
+        {
+            return View();
+        }
+
+        public ActionResult checkout_2()
+        {
+            return View();
+        }
+
+        public ActionResult checkout_3()
+        {
+            return View();
+        }
+
+        public ActionResult checkout_4()
+        {
+            return View();
+        }
     }
 }
