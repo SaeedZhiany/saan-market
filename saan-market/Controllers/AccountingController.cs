@@ -26,24 +26,33 @@ namespace saan_market.Controllers
 
             if (ModelState.IsValid)
             {
-                Tuple<int, bool>  info= model.logIn();
-                if(info.Item2==true)
+                try
                 {
-                    ModelState.AddModelError("", "شما یک مدیر هستید. به صفحه ورود مدیر ارجاع داده می شوید .");
-                    return RedirectToAction("Administrator", "Accounting");
-                }
+                    Tuple<int, bool> info = model.logIn();
+                    if (info.Item2 == true)
+                    {
+                        ModelState.AddModelError("", "شما یک مدیر هستید. به صفحه ورود مدیر ارجاع داده می شوید .");
+                        return RedirectToAction("Administrator", "Accounting");
+                    }
 
-                using (DatabaseEntities context = new DatabaseEntities())
-                {
-                    
+                    using (DatabaseEntities context = new DatabaseEntities())
+                    {
+
                         User selectedUser = (from acc in context.Users
-                                                   where acc.id == info.Item1
-                                                   select acc).First();
-                    Session["userID"]=selectedUser.username;
+                                             where acc.id == info.Item1
+                                             select acc).First();
+                        Session["userID"] = selectedUser.username;
+
+                    }
+
+                    return RedirectToAction("Index", "Home");
 
                 }
-
-                return RedirectToAction("Index", "Home");
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                    return View();
+                }
                 
             }
             ModelState.AddModelError("", "نام کاربری یا رمز عبور اشتباه است.");
