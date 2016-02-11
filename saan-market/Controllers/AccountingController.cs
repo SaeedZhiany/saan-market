@@ -108,6 +108,7 @@ namespace saan_market.Controllers
                     var query = (from user in context.Users
                                  where user.username == username
                                  select new { user.password, user.isAdmin });
+                    
                     if (query.Count() == 1)
                     {
                         var result = query.First();
